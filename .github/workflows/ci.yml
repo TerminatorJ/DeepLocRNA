@@ -17,14 +17,14 @@ jobs:
         steps:
             -   name: Checkout
                 uses: actions/checkout@v2
-
-            -   name: Build docker image
-                run: docker build -t $LOCAL_DOCKER_TAG -f webserver/Dockerfile .
-
+                
             -   name: Setup Python
                 uses: actions/setup-python@v2
                 with:
                     python-version: 3.8
+                    
+            -   name: Build docker image
+                run: docker build -t $LOCAL_DOCKER_TAG -f webserver/Dockerfile .
 
             -   name: Install BioLib CLI
                 run: pip3 install pybiolib
