@@ -8,7 +8,7 @@ on:
 env:
     BIOLIB_LOG: debug
     BIOLIB_PROJECT_URI: KU/DeepLocRNA
-    LOCAL_DOCKER_TAG: DeepLocRNA-docker:latest
+    LOCAL_DOCKER_TAG: deeplocrna-docker:latest
 #Then the workflow get executed followed by several actions.
 jobs:
     build-and-publish:
