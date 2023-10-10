@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: DeepLocRNA
+Version: 0.0.1
+Summary: Predicting RNA localization based on RBP binding information
+Home-page: https://github.com/TerminatorJ/DeepLocRNA
+Author: TerminatorJ
+Author-email: wangjun19950708@gmail.com
+License: MIT

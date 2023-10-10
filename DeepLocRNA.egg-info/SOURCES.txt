@@ -1,0 +1,7 @@
+README.md
+setup.py
+DeepLocRNA.egg-info/PKG-INFO
+DeepLocRNA.egg-info/SOURCES.txt
+DeepLocRNA.egg-info/dependency_links.txt
+DeepLocRNA.egg-info/requires.txt
+DeepLocRNA.egg-info/top_level.txt
