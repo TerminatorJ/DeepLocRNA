@@ -1,0 +1,55 @@
+import multihead_attention_model_torch
+    
+
+
+#model parameters
+multihead_attention_model_torch.myModel1.nb_classes = 7
+multihead_attention_model_torch.myModel1.dim_attention = 80
+multihead_attention_model_torch.myModel1.headnum = 3
+multihead_attention_model_torch.myModel1.pooling_size = 8
+multihead_attention_model_torch.myModel1.drop_input = 0.3
+multihead_attention_model_torch.myModel1.drop_cnn = 0.3
+multihead_attention_model_torch.myModel1.drop_flat = 0.40
+multihead_attention_model_torch.myModel1.W1_regularizer = 0.001
+multihead_attention_model_torch.myModel1.Att_regularizer_weight = 0.001
+multihead_attention_model_torch.myModel1.fc_dim = 100
+multihead_attention_model_torch.myModel1.normalizeatt = True
+multihead_attention_model_torch.myModel1.attmod = "smooth"
+multihead_attention_model_torch.myModel1.sharp_beta = 1
+multihead_attention_model_torch.myModel1.activation = "gelu"#leaky, relu
+multihead_attention_model_torch.myModel1.activation_att = "tanh"
+multihead_attention_model_torch.myModel1.input_dim = 5
+multihead_attention_model_torch.myModel1.attention = True## same time
+multihead_attention_model_torch.myModel1.pool_type = "max"
+multihead_attention_model_torch.myModel1.cnn_scaler = 1   #pair
+multihead_attention_model_torch.myModel1.parnet_dim = 256
+multihead_attention_model_torch.myModel1.hidden = 256   #pair
+multihead_attention_model_torch.myModel1.att_type = "self_attention" ## pair, self_attention
+multihead_attention_model_torch.myModel1.optimizer = "torch.optim.Adam"
+multihead_attention_model_torch.myModel1.lr = 0.001
+multihead_attention_model_torch.myModel1.class_weights = False #torch.FloatTensor([[1,1,7,1,3,5,8]])
+multihead_attention_model_torch.myModel1.gradient_clip = False
+multihead_attention_model_torch.myModel1.weight_decay = 1e-5
+multihead_attention_model_torch.myModel1.pooling_opt = True
+multihead_attention_model_torch.myModel1.filter_length1 = 3
+multihead_attention_model_torch.myModel1.release_layers = 20
+multihead_attention_model_torch.myModel1.prediction = True
+multihead_attention_model_torch.myModel1.fc_layer = True
+multihead_attention_model_torch.myModel1.mode = "full"
+multihead_attention_model_torch.myModel1.mfes = False
+multihead_attention_model_torch.myModel1.OHEM = False
+multihead_attention_model_torch.myModel1.loss_type = "fixed_weight"
+multihead_attention_model_torch.myModel1.add_neg = False
+multihead_attention_model_torch.myModel1.focal = False
+multihead_attention_model_torch.myModel1.att = False
+
+
+
+
+
+
+
+    
+
+
+
