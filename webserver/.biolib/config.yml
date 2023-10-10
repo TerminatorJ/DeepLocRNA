@@ -6,23 +6,14 @@ modules: #This section defines the modules for your BioLib application. Modules 
         command: /home/DeepLocRNA/run.sh #This line specifies the command that should be executed within the Docker container when running the main module. In this case, it runs the /home/DeepLocRNA/run.sh script.
         working_directory: /home/DeepLocRNA/ #This sets the working directory inside the Docker container to /home/DeepLocRNA/. Subsequent commands or operations within the container will be performed in this directory.
         input_files: #This section specifies the input files or data that should be made available to the BioLib application within the Docker container.
-            - COPY / /home/DeepLocRNA/ #This line indicates that all files and directories from the root (/) of the Docker container should be copied to the /home/graph-part/ directory inside the container. This provides the application access to the necessary input data.
+            - COPY / /home/DeepLocRNA/ #This field defines where to copy the input files that are sent from the user of the application
         output_files:
             - COPY /home/DeepLocRNA/output/ / #This line indicates that all files and directories within the /home/DeepLocRNA/output/ directory of the Docker container should be copied to the root directory (/) of the container. This allows the BioLib application to output its results to this directory.
         source_files:
-            - COPY /sample.fasta /home/DeepLocRNA/ #This line copies the sample.fasta file from the root (/) of the Docker container to the /home/graph-part/ directory inside the container. It provides the application with the necessary source fil
+            - COPY /example.fasta /home/DeepLocRNA/ #This line copies the sample.fasta file from the root (/) of the Docker container to the /home/graph-part/ directory inside the container. It provides the application with the necessary source fil
 output_type: markdown
 arguments:
-    # model
-    -   key: --model
-        description: 'Select target RBP'
-        key_value_separator: ' '
-        default_value: ''
-        type: dropdown
-        options:
-          'PRPF8_HepG2': '/rbpnet/models/PRPF8_HepG2.model.h5'
-        required: true
-    # fasta
+
     -   key: --fasta
         description: 'Select FASTA sequences to predict on.'
         key_value_separator: ' '
