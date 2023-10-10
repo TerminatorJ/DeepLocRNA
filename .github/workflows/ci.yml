@@ -8,24 +8,24 @@ env:
     BIOLIB_PROJECT_URI: KU/DeepLocRNA
     LOCAL_DOCKER_TAG: DeepLocRNA-docker:latest
 #Then the workflow get executed followed by several actions.
-jobs:
-    build-and-publish:
+jobs: #(Required)
+    build-and-publish: #The name of the job, which have sevaral actions
         name: Build Docker image and publish if on main
         runs-on: ubuntu-latest
         steps:
             -   name: Checkout
-                uses: actions/checkout@v2
+                uses: actions/checkout@v2#CI/CD has to check out whether their working env is workable
 
             -   name: Build docker image
                 run: docker build -t $LOCAL_DOCKER_TAG -f webserver/Dockerfile .
 
             -   name: Setup Python
-                uses: actions/setup-python@v2
+                uses: actions/setup-python@v2#prepare your python env
                 with:
-                    python-version: 3.8
+                    python-version: 3.8#python version 3.8 will be installed
 
             -   name: Install BioLib CLI
-                run: pip3 install pybiolib
+                run: pip3 install pybiolib #run the linux command, just use run attribute
 
             -   name: Publish new version to BioLib if on main branch
                 if: github.ref == 'refs/heads/main'
