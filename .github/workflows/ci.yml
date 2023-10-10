@@ -4,7 +4,7 @@ on:
     push: #(required)trigger this event if someone use push of this repository, # more trigger events can refer to: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
         branches: [ main ]
     pull_request:
-        branches: [ main ]
+        branches: [ main ] 
 env:
     BIOLIB_LOG: debug
     BIOLIB_PROJECT_URI: KU/DeepLocRNA
