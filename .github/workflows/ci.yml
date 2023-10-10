@@ -33,4 +33,4 @@ jobs:
                 if: github.ref == 'refs/heads/main'
                 run: cd webserver && biolib push $BIOLIB_PROJECT_URI
                 env:
-                    BIOLIB_TOKEN: ${{ secrets.BIOLIB_TOKEN }}
+                    BIOLIB_TOKEN: gcrMOA3bhdu9QsgdjZQ7djmyIM5anJQOGOTQeYu10mo
