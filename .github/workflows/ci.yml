@@ -1,12 +1,13 @@
 name: CI
 
-on: push
+on: push #(required)trigger this event if someone use push of this repository, 
+         # more trigger events can refer to: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 
 env:
     BIOLIB_LOG: debug
     BIOLIB_PROJECT_URI: KU/DeepLocRNA
     LOCAL_DOCKER_TAG: DeepLocRNA-docker:latest
-
+#Then the workflow get executed followed by several actions.
 jobs:
     build-and-publish:
         name: Build Docker image and publish if on main
