@@ -1,7 +1,7 @@
 FROM continuumio/miniconda3
 
 WORKDIR /home/DeepLocRNA
-
+ 
 COPY DeepLocRNA DeepLocRNA
 COPY setup.py .
 COPY README.md .
