@@ -4,11 +4,11 @@ modules: #This section defines the modules for your BioLib application. Modules 
     main: #This is the name of the main module of your BioLib application.
         image: 'local-docker://deeplocrna:latest' #This line specifies the Docker image that should be used for running the main module. It points to a local Docker image named graph-part-docker with the latest tag. This means that the BioLib application will run in a Docker container created from this image.
         command: /home/DeepLocRNA/run.sh #This line specifies the command that should be executed within the Docker container when running the main module. In this case, it runs the /home/graph-part/run.sh script.
-        working_directory: /home/graph-part/ #This sets the working directory inside the Docker container to /home/graph-part/. Subsequent commands or operations within the container will be performed in this directory.
+        working_directory: /home/DeepLocRNA/ #This sets the working directory inside the Docker container to /home/graph-part/. Subsequent commands or operations within the container will be performed in this directory.
         input_files: #This section specifies the input files or data that should be made available to the BioLib application within the Docker container.
-            - COPY / /home/graph-part/ #This line indicates that all files and directories from the root (/) of the Docker container should be copied to the /home/graph-part/ directory inside the container. This provides the application access to the necessary input data.
+            - COPY / /home/DeepLocRNA/ #This line indicates that all files and directories from the root (/) of the Docker container should be copied to the /home/graph-part/ directory inside the container. This provides the application access to the necessary input data.
         output_files:
-            - COPY /home/graph-part/output/ / #This line indicates that all files and directories within the /home/graph-part/output/ directory of the Docker container should be copied to the root directory (/) of the container. This allows the BioLib application to output its results to this directory.
+            - COPY /home/DeepLocRNA/output/ / #This line indicates that all files and directories within the /home/DeepLocRNA/output/ directory of the Docker container should be copied to the root directory (/) of the container. This allows the BioLib application to output its results to this directory.
         source_files:
             - COPY /sample.fasta /home/graph-part/ #This line copies the sample.fasta file from the root (/) of the Docker container to the /home/graph-part/ directory inside the container. It provides the application with the necessary source fil
 output_type: markdown
