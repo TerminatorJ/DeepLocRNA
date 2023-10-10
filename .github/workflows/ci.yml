@@ -7,7 +7,7 @@ on:
         branches: [ main ]
 env:
     BIOLIB_LOG: debug
-    BIOLIB_PROJECT_URI: KU/DeepLocRNA
+    BIOLIB_PROJECT_URI: RNA_trafficking/DeepLocRNA
     LOCAL_DOCKER_TAG: deeplocrna-docker:latest
 #Then the workflow get executed followed by several actions.
 jobs:
