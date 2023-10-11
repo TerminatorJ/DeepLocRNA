@@ -25,7 +25,7 @@ jobs:
                     python-version: 3.8
                     
             -   name: Build docker image
-                run: docker build -t $LOCAL_DOCKER_TAG -f webserver/Dockerfile 
+                run: docker build -t $LOCAL_DOCKER_TAG -f webserver/Dockerfile .
 
             -   name: check file
                 run: docker run deeplocrna-docker:latest ls /home/DeepLocRNA
