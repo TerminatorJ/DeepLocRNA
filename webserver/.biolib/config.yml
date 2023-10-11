@@ -1,5 +1,5 @@
 biolib_version: 2 #This specifies that the configuration file is written in version 2 of the BioLib configuration format.
-description_file: README.md #This line specifies the name of the file (README.md) that contains the description or documentation for your BioLib application. This file is likely used to provide information about your application.
+
 modules: #This section defines the modules for your BioLib application. Modules are components of your application, and each module can have specific settings.
     main: #This is the name of the main module of your BioLib application.
         image: 'local-docker://deeplocrna-docker:latest' #This line specifies the Docker image that should be used for running the main module. It points to a local Docker image named deeplocrna-docker with the latest tag. This means that the BioLib application will run in a Docker container created from this image.
