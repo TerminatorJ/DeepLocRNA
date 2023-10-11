@@ -8,4 +8,5 @@ pip install DeepLocRNA
 ```
 More instructions of the standalone tool can refer to our git repository as: https://github.com/TerminatorJ/DeepLocRNA/DeepLocRNA/README.md
 # Concept image
-![DeepLocRNA](assets/Figure1_2.png)
+![DeepLocRNA](assets/Figure1.png)
+
