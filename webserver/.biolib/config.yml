@@ -26,7 +26,7 @@ license_file: LICENSE
 citation:
     entry_type: article
     author: Jun Wang, Marc Horlacher, Ole winther
-    title: DeepLocRNA: An Interpretable Deep Learning Model for Deriving RNA Subcellular Localization with domain-specific transfer-learning
+    title: DeepLocRNA-An Interpretable Deep Learning Model for Deriving RNA Subcellular Localization with domain-specific transfer-learning
     publisher: unknown
     year: '2023'
     doi: unknown
