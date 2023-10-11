@@ -27,6 +27,9 @@ jobs:
             -   name: Build docker image
                 run: docker build -t $LOCAL_DOCKER_TAG -f webserver/Dockerfile .
 
+            -   name: check file
+                run: docker run -it deeplocrna-docker:latest /bin/bash -c 'cd /home/DeepLocRNA && ls'
+
             -   name: Install BioLib CLI
                 run: pip3 install pybiolib
 
