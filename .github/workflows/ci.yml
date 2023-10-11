@@ -9,7 +9,7 @@ env:
     BIOLIB_LOG: debug
     BIOLIB_PROJECT_URI: RNA_trafficking/DeepLocRNA
     LOCAL_DOCKER_TAG: deeplocrna-docker:latest
-    BIOLIB_TOKEN: 5NnhRCuQ1C5bEeStyNgcyy8eIMC2Bv8H9asz3LBSPYc
+
 #Then the workflow get executed followed by several actions.
 jobs:
     build-and-publish:
@@ -30,12 +30,9 @@ jobs:
             -   name: Install BioLib CLI
                 run: pip3 install pybiolib
 
-            -   name: test token variable
-                run: echo $BIOLIB_TOKEN
-
             -   name: Publish new version to BioLib if on main branch
                 #if: github.ref == 'refs/heads/developer2'
  
                 run: cd webserver && biolib push $BIOLIB_PROJECT_URI
                 env:
-                    BIOLIB_TOKEN: $BIOLIB_TOKEN
+                    BIOLIB_TOKEN: ${{ secrets.BIOLIB_TOKEN }}
