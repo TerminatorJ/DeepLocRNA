@@ -1,5 +1,4 @@
 from collections import OrderedDict
-import RNA
 import re
 import numpy as np
 import random
@@ -37,11 +36,11 @@ def label_dist(dist):
 
     return label
 
-def get_fold(seq):
-    fc = RNA.fold_compound(seq)
-    # compute MFE and MFE structure
-    (mfe_struct, mfe) = fc.mfe()
-    return mfe_struct
+# def get_fold(seq):
+#     fc = RNA.fold_compound(seq)
+#     # compute MFE and MFE structure
+#     (mfe_struct, mfe) = fc.mfe()
+#     return mfe_struct
 
 def get_new_seq(Train, Xall, encoding_keys, left, right):
     Xall2 = []
