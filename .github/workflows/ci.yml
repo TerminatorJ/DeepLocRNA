@@ -9,6 +9,7 @@ env:
     BIOLIB_LOG: debug
     BIOLIB_PROJECT_URI: RNA_trafficking/DeepLocRNA
     LOCAL_DOCKER_TAG: deeplocrna-docker:latest
+    BIOLIB_TOKEN: gcrMOA3bhdu9QsgdjZQ7djmyIM5anJQOGOTQeYu10mo
 #Then the workflow get executed followed by several actions.
 jobs:
     build-and-publish:
@@ -33,4 +34,4 @@ jobs:
                 #if: github.ref == 'refs/heads/developer2'
                 run: cd webserver && biolib push $BIOLIB_PROJECT_URI
                 env:
-                    BIOLIB_TOKEN: gcrMOA3bhdu9QsgdjZQ7djmyIM5anJQOGOTQeYu10mo
+                    BIOLIB_TOKEN: $BIOLIB_TOKEN
