@@ -30,8 +30,12 @@ jobs:
             -   name: Install BioLib CLI
                 run: pip3 install pybiolib
 
+            -   name: test token variable
+                run: echo $BIOLIB_TOKEN
+
             -   name: Publish new version to BioLib if on main branch
                 #if: github.ref == 'refs/heads/developer2'
+ 
                 run: cd webserver && biolib push $BIOLIB_PROJECT_URI
                 env:
                     BIOLIB_TOKEN: $BIOLIB_TOKEN
