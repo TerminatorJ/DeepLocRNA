@@ -80,13 +80,13 @@ class Actvation(nn.Module):
         return x
     
 class Parnet_model(nn.Module):
-    def __init__(self, release_layers, prediction):
+    def __init__(self, release_layers, prediction, device):
         super(Parnet_model, self).__init__()
         self.release_layers = release_layers
         if prediction:
-            self.parnet_model = torch.load("/home/sxr280/DeepRBPLoc/parnet_model/network.PanRBPNet.2023-03-13.ckpt", map_location=torch.device('cpu'))
+            self.parnet_model = torch.load("/home/sxr280/DeepRBPLoc/parnet_model/network.PanRBPNet.2023-03-13.ckpt", map_location=torch.device(device))
         else:
-            self.parnet_model = torch.load("/home/sxr280/DeepRBPLoc/parnet_model/network.PanRBPNet.2023-03-13.ckpt", map_location=torch.device("cuda"))
+            self.parnet_model = torch.load("/home/sxr280/DeepRBPLoc/parnet_model/network.PanRBPNet.2023-03-13.ckpt", map_location=torch.device(device))
                
     def forward(self, x):
         x = x.to(torch.float32)
