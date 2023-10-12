@@ -3,7 +3,7 @@ biolib_version: 2 #This specifies that the configuration file is written in vers
 modules: #This section defines the modules for your BioLib application. Modules are components of your application, and each module can have specific settings.
     main: #This is the name of the main module of your BioLib application.
         image: 'local-docker://deeplocrna-docker:latest' #This line specifies the Docker image that should be used for running the main module. It points to a local Docker image named deeplocrna-docker with the latest tag. This means that the BioLib application will run in a Docker container created from this image.
-        command: python /home/DeepLocRNA/DeepLocRNA/fine_tuning_deeprbploc_allRNA_prediction.py --device cuda  #This line specifies the command that should be executed within the Docker container when running the main module. In this case, it runs the /home/DeepLocRNA/run.sh script.
+        command: python /home/DeepLocRNA/DeepLocRNA/fine_tuning_deeprbploc_allRNA_prediction.py --device cpu  #This line specifies the command that should be executed within the Docker container when running the main module. In this case, it runs the /home/DeepLocRNA/run.sh script.
         working_directory: /home/DeepLocRNA/DeepLocRNA/ #This sets the working directory inside the Docker container to /home/DeepLocRNA/. Subsequent commands or operations within the container will be performed in this directory.
         input_files: #This section specifies the input files or data that should be made available to the BioLib application within the Docker container.
             - COPY / /home/DeepLocRNA/DeepLocRNA/ #This field defines where to copy the input files that are sent from the user of the application
