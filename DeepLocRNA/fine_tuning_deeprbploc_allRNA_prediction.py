@@ -63,7 +63,7 @@ def predict(fasta, device="cuda", batch_size = 8):
        
     gin.parse_config_file('./config.gin')
     DeepLocRNA_model = myModel1(**hyperparams_1)
-    checkpoint = torch.load(ckp_path)
+    checkpoint = torch.load(ckp_path, map_location=torch.device(device))
     model_state = checkpoint['state_dict']
     DeepLocRNA_model.load_state_dict(model_state)
 
@@ -77,7 +77,7 @@ def predict(fasta, device="cuda", batch_size = 8):
         all_y_pred.append(y_pred)
     
     refs = np.array(["Nucleus","Exosome","Cytosol","Cytoplasm","Ribosome","Membrane","Endoplasmic reticulum", "Microvesicle", "Mitochondrion"])
-    #print(ids,all_y_pred,refs)
+    print(ids,all_y_pred,refs)
     result_df = pd.DataFrame(data = all_y_pred, columns = refs, index = ids)
     
     result_df.to_csv(os.path.join(current_path, "output.csv"))
