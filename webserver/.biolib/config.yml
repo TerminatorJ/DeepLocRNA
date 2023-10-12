@@ -11,7 +11,7 @@ modules: #This section defines the modules for your BioLib application. Modules 
             - COPY /home/DeepLocRNA/DeepLocRNA/output.csv / #This line indicates that all files and directories within the /home/DeepLocRNA/output/ directory of the Docker container should be copied to the root directory (/) of the container. This allows the BioLib application to output its results to this directory.
         source_files:
             - COPY /example.fasta /home/DeepLocRNA/DeepLocRNA/ #This line copies the sample.fasta file from the root (/) of the Docker container to the /home/graph-part/ directory inside the container. It provides the application with the necessary source fil
-        #default_machine: 'gpu.small'
+        default_machine: 'gpu.small'
 output_type: markdown
 arguments: 
 
