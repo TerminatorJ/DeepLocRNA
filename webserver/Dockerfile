@@ -18,7 +18,7 @@ COPY setup.py .
 COPY README.md .
 COPY requirements.txt .
 #RUN conda install python=3.8
-RUN pip install -r requirements.txt # server has additional requirements
+RUN conda install --file requirements.txt # server has additional requirements
 
 COPY webserver/run.sh .
 RUN mkdir /outputs
