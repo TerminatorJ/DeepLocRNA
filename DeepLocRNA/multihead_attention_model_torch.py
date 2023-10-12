@@ -19,7 +19,7 @@ class DM3Loc_sequential(nn.Module):
     def __init__(self, drop_cnn, drop_flat, drop_input, pooling_size, fc_dim, nb_classes, dim_attention,
                  headnum, Att_regularizer_weight, normalizeatt, sharp_beta, attmod, W1_regularizer, 
                  activation, activation_att, attention, pool_type, cnn_scaler, att_type, input_dim, hidden, 
-                 parnet_dim, pooling_opt, filter_length1, release_layers, prediction, fc_layer, mode, mfes, RNA_types, RNA_type, att):
+                 parnet_dim, pooling_opt, filter_length1, release_layers, prediction, fc_layer, mode, mfes, RNA_types, RNA_type, att, device):
                                                                                           
         super(DM3Loc_sequential, self).__init__()
 
@@ -58,6 +58,7 @@ class DM3Loc_sequential(nn.Module):
         self.RNA_types = RNA_types
         self.RNA_type = RNA_type
         self.att = att
+        self.device = device
         
 
         encoding_seq_fold = {'(': [1, 0, 0, 0],
@@ -152,7 +153,7 @@ class DM3Loc_sequential(nn.Module):
             self.FC_block = nn.Sequential(fc3,
                                         nn.Sigmoid())
 
-        self.Parnet_block2 = nn.Sequential(Parnet_model(release_layers, prediction),
+        self.Parnet_block2 = nn.Sequential(Parnet_model(release_layers, prediction, device),
                                           maxpool,
                                           dropout1)#[256]
         
@@ -250,7 +251,7 @@ class myModel1(pl.LightningModule):
         self.network = DM3Loc_sequential(drop_cnn, drop_flat, drop_input, pooling_size, fc_dim, nb_classes, dim_attention,
                  headnum, Att_regularizer_weight, normalizeatt, sharp_beta, attmod, W1_regularizer, 
                  activation, activation_att, attention, pool_type, cnn_scaler, att_type, input_dim, 
-                 hidden, parnet_dim, pooling_opt, filter_length1, release_layers, prediction, fc_layer, mode, mfes, RNA_types, RNA_type, att)
+                 hidden, parnet_dim, pooling_opt, filter_length1, release_layers, prediction, fc_layer, mode, mfes, RNA_types, RNA_type, att, self.device)
         self.network = self.network.to(self.device)
         self.network = self.network.to(torch.float32)
         self.lr = lr
