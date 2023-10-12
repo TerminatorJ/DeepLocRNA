@@ -21,6 +21,7 @@ COPY setup.py .
 COPY README.md .
 COPY requirements.txt .
 RUN pip install -r requirements.txt # server has additional requirements
+RUN pip install ./parnet-develop
 
 COPY webserver/run.sh .
 RUN mkdir /outputs
