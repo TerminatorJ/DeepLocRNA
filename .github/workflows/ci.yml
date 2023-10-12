@@ -31,6 +31,7 @@ jobs:
                 run: |
                     docker run deeplocrna-docker:latest ls /home/DeepLocRNA
                     docker run deeplocrna-docker:latest ls /home/DeepLocRNA/DeepLocRNA
+                    docker run deeplocrna-docker:latest nvidia-smi
 
             -   name: Install BioLib CLI
                 run: pip3 install pybiolib
