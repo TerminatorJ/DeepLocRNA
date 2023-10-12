@@ -84,9 +84,9 @@ class Parnet_model(nn.Module):
         super(Parnet_model, self).__init__()
         self.release_layers = release_layers
         if prediction:
-            self.parnet_model = torch.load("/home/sxr280/DeepRBPLoc/parnet_model/network.PanRBPNet.2023-03-13.ckpt", map_location=torch.device(device))
+            self.parnet_model = torch.load("./Result/allRNA_finetuning/network.PanRBPNet.2023-03-13.ckpt", map_location=torch.device(device))
         else:
-            self.parnet_model = torch.load("/home/sxr280/DeepRBPLoc/parnet_model/network.PanRBPNet.2023-03-13.ckpt", map_location=torch.device(device))
+            self.parnet_model = torch.load("./Result/allRNA_finetuning/network.PanRBPNet.2023-03-13.ckpt", map_location=torch.device(device))
                
     def forward(self, x):
         x = x.to(torch.float32)
