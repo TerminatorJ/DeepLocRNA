@@ -20,6 +20,7 @@ COPY DeepLocRNA DeepLocRNA
 COPY setup.py .
 COPY README.md .
 COPY requirements.txt .
+COPY parnet-develop parnet-develop
 RUN pip install -r requirements.txt # server has additional requirements
 RUN pip install ./parnet-develop
 
