@@ -1,4 +1,5 @@
-FROM continuumio/miniconda3
+#FROM continuumio/miniconda3
+FROM nvidia/cuda:11.0-base
 
 WORKDIR /home/DeepLocRNA
 
