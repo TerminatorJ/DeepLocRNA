@@ -10,6 +10,8 @@ RUN apt-get update && \
     /opt/conda/bin/conda init && \
     echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc 
 
+ENV PATH="/opt/conda/bin:${PATH}"
+
 WORKDIR /home/DeepLocRNA
 
 COPY DeepLocRNA DeepLocRNA
