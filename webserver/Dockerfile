@@ -1,5 +1,5 @@
-#FROM continuumio/miniconda3
-FROM nvidia/cuda:12.2.0-runtime-ubuntu22.04
+FROM continuumio/miniconda3
+#FROM nvidia/cuda:12.2.0-runtime-ubuntu22.04
 
 #Install Conda
 # RUN apt-get update && \
@@ -20,7 +20,7 @@ COPY DeepLocRNA DeepLocRNA
 COPY setup.py .
 COPY README.md .
 COPY requirements.txt .
-# RUN pip install -r requirements.txt # server has additional requirements
+RUN pip install -r requirements.txt # server has additional requirements
 
 COPY webserver/run.sh .
 RUN mkdir /outputs
