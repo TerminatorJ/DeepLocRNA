@@ -6,7 +6,8 @@ Alternatively, if you want to predict a large number of RNA sequence, please dow
 ```
 pip install DeepLocRNA
 ```
-More instructions of the standalone tool can refer to our git repository as: https://github.com/TerminatorJ/DeepLocRNA/DeepLocRNA/README.md
+More instructions of the standalone tool can refer to our git repository as: https://github.com/TerminatorJ/DeepLocRNA/README.md
 # Concept image
 ![DeepLocRNA](assets/Figure1.png)
+
 
