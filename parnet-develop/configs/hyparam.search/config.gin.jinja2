@@ -1,0 +1,67 @@
+import torch
+
+from torchrbpnet import networks
+from torchrbpnet import layers
+
+train.network = @networks.MultiRBPNet()
+train.max_epochs = 100
+
+networks.MultiRBPNet.n_tasks = 223
+
+
+# ------------------------- #
+# --- Global Parameters --- #
+# ------------------------- #
+
+activation = {{ ['@torch.nn.ReLU()', '@torch.nn.SiLU()', '@torch.nn.Mish()'] | random }}
+hidden_dim = {{ [128, 256, 384] | random }}
+
+
+# ----------------- #
+# --- Optimizer --- # 
+# ----------------- #
+
+train.optimizer = @torch.optim.Adam
+torch.optim.Adam.lr = {{ [0.001, 0.0005, 0.0001] | random }}
+
+
+# ------------ #
+# --- Stem --- #
+# ------------ #
+
+layers.stems.StemConv1D.kernel_size = {{ [6, 12] | random }}
+layers.stems.StemConv1D.filters = {{ [128, 256, 384] | random }}
+
+
+# ------------ #
+# --- Body --- #
+# ------------ #
+
+layers.bodies.RNAConv1dBody.block_layer = {{ ['@layers.blocks.ResConv1DBlock'] | random }}
+layers.bodies.RNAConv1dBody.tower_layers_filters = {{ [
+    [(8, 256)],
+    [(12, 256)],
+    [(8, 384)],
+    [(4, 256), (4, 384)],
+    [(6, 256), (2, 384)],
+    [(6, 256), (4, 384)],
+    [(6, 256), (6, 384)],
+    [(3, 256), (3, 384), (2, 512)],
+    [(4, 256), (4, 384), (1, 512)],
+    ] | random }}
+layers.bodies.RNAConv1dBody.dilation = {{ [1.0, 1.25, 1.5] | random }}
+
+
+# --------------------- #
+# --- Body ResBlocks -- #
+# --------------------- #
+
+# --> ResConv1DBlock
+layers.blocks.ResConv1DBlock.kernel_size = {{ [3, 5] | random }}
+layers.blocks.ResConv1DBlock.dropout = {{ [0.15, 0.3] | random }}
+layers.blocks.ResConv1DBlock.activation = %activation
+
+# # --> BasenjiConv1DBlock
+# layers.blocks.BasenjiConv1DBlock.kernel_size = {{ [3, 5] | random }}
+# layers.blocks.BasenjiConv1DBlock.dropout = {{ [0.15, 0.3] | random }}
+# layers.blocks.BasenjiConv1DBlock.activation = %activation

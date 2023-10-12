@@ -1,0 +1,23 @@
+{
+    "jupyter.jupyterServerType": "local",
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#ff9d2f",
+        "activityBar.background": "#ff9d2f",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#008043",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "commandCenter.border": "#15202b99",
+        "sash.hoverBorder": "#ff9d2f",
+        "statusBar.background": "#fb8500",
+        "statusBar.foreground": "#15202b",
+        "statusBarItem.hoverBackground": "#c86a00",
+        "statusBarItem.remoteBackground": "#fb8500",
+        "statusBarItem.remoteForeground": "#15202b",
+        "titleBar.activeBackground": "#fb8500",
+        "titleBar.activeForeground": "#15202b",
+        "titleBar.inactiveBackground": "#fb850099",
+        "titleBar.inactiveForeground": "#15202b99"
+    },
+    "peacock.color": "#fb8500"
+}

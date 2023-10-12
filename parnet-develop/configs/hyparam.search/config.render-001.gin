@@ -1,0 +1,69 @@
+import torch
+import pytorch_lightning
+
+from parnet import networks
+from parnet import layers
+from parnet import metrics
+
+train.network = @networks.PanRBPNet()
+train.metrics = {'pcc': @metrics.PearsonCorrCoeff, 'filtered_pcc': @metrics.FilteredPearsonCorrCoeff}
+train.batch_size = 4
+train.shuffle = 1_000_000
+train.max_epochs = 500
+
+networks.PanRBPNet.n_tasks = 223
+
+
+# ----------------- #
+# --- Callbacks --- # 
+# ----------------- #
+
+pytorch_lightning.callbacks.EarlyStopping.patience = 500
+
+
+# ------------------------- #
+# --- Global Parameters --- #
+# ------------------------- #
+
+activation = @torch.nn.SiLU()
+hidden_dim = 128
+
+
+# ----------------- #
+# --- Optimizer --- # 
+# ----------------- #
+
+train.optimizer = @torch.optim.Adam
+torch.optim.Adam.lr = 0.0005
+
+
+# ------------ #
+# --- Stem --- #
+# ------------ #
+
+layers.stems.StemConv1D.kernel_size = 12
+layers.stems.StemConv1D.filters = 128
+
+
+# ------------ #
+# --- Body --- #
+# ------------ #
+
+layers.towers.Conv1DTower.block_layer = @layers.blocks.ResConv1DBlock
+layers.towers.Conv1DTower.layers_filters = [(8, 256)]
+layers.towers.Conv1DTower.dilation = 1.5
+
+
+# --------------------- #
+# --- Body ResBlocks -- #
+# --------------------- #
+
+# --> ResConv1DBlock
+layers.blocks.ResConv1DBlock.kernel_size = 3
+layers.blocks.ResConv1DBlock.dropout = 0.15
+layers.blocks.ResConv1DBlock.activation = %activation
+
+# # --> BasenjiConv1DBlock
+# layers.blocks.BasenjiConv1DBlock.kernel_size = 5
+# layers.blocks.BasenjiConv1DBlock.dropout = 0.15
+# layers.blocks.BasenjiConv1DBlock.activation = %activation
