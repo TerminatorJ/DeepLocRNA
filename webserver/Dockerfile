@@ -1,7 +1,7 @@
-FROM continuumio/miniconda3
-#FROM nvidia/cuda:12.2.0-base-ubuntu20.04
+#FROM continuumio/miniconda3
+FROM nvidia/cuda:11.1-runtime-ubuntu20.04
 
-# Install Conda
+#Install Conda
 # RUN apt-get update && \
 #     apt-get install -y wget && \
 #     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh && \
@@ -12,13 +12,17 @@ FROM continuumio/miniconda3
 
 # ENV PATH="/opt/conda/bin:${PATH}"
 
+#ENTRYPOINT ["python3"]
+
 WORKDIR /home/DeepLocRNA
 
 COPY DeepLocRNA DeepLocRNA
 COPY setup.py .
 COPY README.md .
 COPY requirements.txt .
-RUN conda install python=3.8
+# RUN conda install python=3.8
+RUN apt update
+RUN apt install python3.8 python3.8-pip -y
 RUN pip install -r requirements.txt # server has additional requirements
 
 COPY webserver/run.sh .
