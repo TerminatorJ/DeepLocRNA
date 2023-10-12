@@ -24,4 +24,4 @@ RUN pip install -r requirements.txt # server has additional requirements
 COPY webserver/run.sh .
 RUN mkdir /outputs
 RUN chmod +x run.sh
-RUN nvidia-smi
+
