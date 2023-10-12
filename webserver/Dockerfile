@@ -1,5 +1,5 @@
 #FROM continuumio/miniconda3
-FROM nvidia/cuda:11.0-base
+FROM nvidia/cuda:11.0.3-base-ubuntu18.04
 
 # Install Conda
 RUN apt-get update && \
