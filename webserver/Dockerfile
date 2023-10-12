@@ -1,6 +1,6 @@
 #FROM continuumio/miniconda3
 FROM nvidia/cuda:11.1.1-runtime-ubuntu20.04
-ENTRYPOINT ["python3"]
+
 #Install Conda
 RUN apt-get update && \
     apt-get install -y wget && \
