@@ -1,3 +1,4 @@
+![DeepLocRNA](webserver/assets/Figure1small.png)
 # DeepLocRNA
 
 DeeplocRNA is a deep neural network that predict the RNA localization, enabling the prediction across 5 RNA species (mRNA, miRNA, lncRNA, snRNA, snoRNA) and different species (Human and Mouse). 
@@ -7,5 +8,8 @@ Alternatively, if you want to predict a large number of RNA sequence, please dow
 pip install DeepLocRNA
 ```
 More instructions of the standalone tool can refer to our git repository as: https://github.com/TerminatorJ/DeepLocRNA/DeepLocRNA/README.md
-# Concept image
-![DeepLocRNA](webserver/assets/Figure1small.png)
+
+
+
+
+
