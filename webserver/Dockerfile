@@ -22,7 +22,8 @@ COPY README.md .
 COPY requirements.txt .
 # RUN conda install python=3.8
 RUN apt update
-RUN apt install python3.8 python3.8-pip -y
+# RUN apt install python3.8 python3.8-pip -y
+RUN apt update && apt install -y python3.8 python3.8-pip
 RUN pip install -r requirements.txt # server has additional requirements
 
 COPY webserver/run.sh .
