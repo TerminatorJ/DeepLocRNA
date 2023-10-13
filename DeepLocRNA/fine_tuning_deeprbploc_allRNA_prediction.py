@@ -9,7 +9,7 @@ import gin
 
 import argparse
 import pandas as pd
-def predict(fasta, device="cuda", batch_size = 8):
+def predict(fasta, device="cuda", batch_size = 2):
 
     #generating the data
     X, mask_label, ids = preprocess_data2(left=4000, right=4000, dataset=fasta, padmod="after",pooling_size=8, foldnum=1, pooling=True, RNA_type = "RNA", RNA_tag = False)
@@ -69,12 +69,17 @@ def predict(fasta, device="cuda", batch_size = 8):
 
     
     #doing the prediction
-    all_y_pred = []
+    #doing the prediction
+    all_y_pred_list = []
+
     for i, batch in enumerate(dataloader):
         X, X_tag, mask = batch
         y_pred = DeepLocRNA_model.forward(X, mask, X_tag)
-        y_pred = list(y_pred.detach().cpu().numpy()[0])
-        all_y_pred.append(y_pred)
+        y_pred = y_pred.detach().cpu().numpy()
+        all_y_pred_list.append(y_pred)
+
+    # Convert the list of arrays to a single NumPy array
+    all_y_pred = np.vstack(all_y_pred_list)
     
     refs = np.array(["Nucleus","Exosome","Cytosol","Cytoplasm","Ribosome","Membrane","Endoplasmic reticulum", "Microvesicle", "Mitochondrion"])
     # print(ids,all_y_pred,refs)
@@ -91,6 +96,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     predict(args.fasta, device=args.device)
+    print("Please download the output by pressing the download button, you will find the output.csv file afterwards!!!")
 
 
 #python fine_tuning_deeprbploc_allRNA_prediction.py --fasta ./example.fasta --device cpu
