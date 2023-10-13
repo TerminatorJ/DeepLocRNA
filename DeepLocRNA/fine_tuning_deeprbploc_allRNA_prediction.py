@@ -77,7 +77,7 @@ def predict(fasta, device="cuda", batch_size = 8):
         all_y_pred.append(y_pred)
     
     refs = np.array(["Nucleus","Exosome","Cytosol","Cytoplasm","Ribosome","Membrane","Endoplasmic reticulum", "Microvesicle", "Mitochondrion"])
-    print(ids,all_y_pred,refs)
+    # print(ids,all_y_pred,refs)
     result_df = pd.DataFrame(data = all_y_pred, columns = refs, index = ids)
     
     result_df.to_csv(os.path.join(current_path, "output.csv"))
