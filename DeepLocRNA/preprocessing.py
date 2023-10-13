@@ -95,11 +95,11 @@ def group_sample(label_id_Dict,datasetfolder, dataset_name,foldnum=8):
             Train[i].extend(train_fold_ids[i])
             Val[i].extend(val_fold_ids[i])
             Test[i].extend(test_fold_ids[i])
-            print('label:%s finished sampling! Train length: %s, Test length: %s, Val length:%s'%(eachkey, len(train_fold_ids[i]), len(test_fold_ids[i]),len(val_fold_ids[i])))
+            # print('label:%s finished sampling! Train length: %s, Test length: %s, Val length:%s'%(eachkey, len(train_fold_ids[i]), len(test_fold_ids[i]),len(val_fold_ids[i])))
     
     for i in range(foldnum):
-        print("spliting the data into:%s folds" % foldnum)
-        print('Train length: %s, Test length: %s, Val length: %s'%(len(Train[i]),len(Test[i]),len(Val[i])))
+        # print("spliting the data into:%s folds" % foldnum)
+        # print('Train length: %s, Test length: %s, Val length: %s'%(len(Train[i]),len(Test[i]),len(Val[i])))
         #print(type(Train[i]))
         #print(Train[0][:foldnum])
         #save in pickle
@@ -132,9 +132,9 @@ def maxpooling_mask(input_mask,pool_length=3):
 
 
 def preprocess_data(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/testdata/modified_multilabel_seq_nonredundent.fasta',padmod='center',pooling_size=8, foldnum=4, pooling=True, RNA_type = None, RNA_tag = False):
-    print("loading the gene object")
+    # print("loading the gene object")
     gene_data = Gene_data.load_sequence(dataset, left, right, RNA_type=RNA_type)
-    print("after loading the gene object")
+    # print("after loading the gene object")
     id_label_seq_Dict = get_id_label_seq_Dict(gene_data)
     label_id_Dict = get_label_id_Dict(id_label_seq_Dict)
     Train=OrderedDict()
@@ -153,7 +153,7 @@ def preprocess_data(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/test
             # Val[i] = np.loadtxt(datasetfolder + "/" + dataset_name + '/Val5'+str(i)+'.txt',dtype='str', delimiter = "\n")#HDF5Matrix(os.path.join('../mRNA_multi_data_keepnum_code/', 'datafold'+str(i)+'.h5'), 'Val')[:]
     else:
 
-        print("creating group sampling")
+        # print("creating group sampling")
         [Train, Test,Val] = group_sample(label_id_Dict,datasetfolder, dataset_name,foldnum)
     
     Xtrain={}
@@ -173,17 +173,17 @@ def preprocess_data(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/test
         pattern = r"RNA_category:([^,\n]+)"
         RNA_types = re.findall(pattern, string)
         RNA_types = list(sorted(set(RNA_types)))
-        print("RNA_types", RNA_types)
+        # print("RNA_types", RNA_types)
         seq_encoding_keys += RNA_types
         encoding_keys = seq_encoding_keys
-        print("new encoding list:", encoding_keys)
+        # print("new encoding list:", encoding_keys)
     else:
         encoding_keys = seq_encoding_keys
     for i in range(foldnum):
         #if i <2:
         #   continue
         
-        print('padding and indexing data')
+        # print('padding and indexing data')
         
         # fold_encoding_keys  = fold_encoding_keys 
         encoding_vectors = seq_encoding_vectors
@@ -212,16 +212,16 @@ def preprocess_data(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/test
            #merge left and right and padding after sequence
            Xall = [np.concatenate([x,y],axis=-1) for x,y in zip(X_left,X_right)]
            #adding additional tag for each sequence
-           print("Xall before:", np.array(Xall).shape, "example:", Xall[0])
+           # print("Xall before:", np.array(Xall).shape, "example:", Xall[0])
            if RNA_tag:
                Xall = get_new_seq(Train[i], Xall, encoding_keys, left, right)
-           print("Xall shape:", np.array(Xall).shape, Xall[0])
+           # print("Xall shape:", np.array(Xall).shape, Xall[0])
         #    print("where < 6 :", len(Xall), Xall)
         #    mRNA_site = Xall
-           print("before padding:", Xall[12])
+           # print("before padding:", Xall[12])
            Xtrain[i] = pad_sequences(Xall,maxlen=left+right,dtype=np.int8, value=encoding_keys.index('UNK'),padding='post')
         #    Xtrain[i] = np.zeros(left+right，)
-           print("after padding:", Xtrain[i][12])
+           # print("after padding:", Xtrain[i][12])
         #    for i in Xtrain[i]:
         #        tag = i[0]
         #        if tag < 6:
@@ -236,7 +236,7 @@ def preprocess_data(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/test
                
 
         Ytrain[i] = np.array([label_dist(list(id_label_seq_Dict[id].keys())[0]) for id in Train[i]])
-        print("training shapes"+str(Xtrain[i].shape)+" "+str(Ytrain[i].shape))
+        # print("training shapes"+str(Xtrain[i].shape)+" "+str(Ytrain[i].shape))
         
         #test
         X_left = [[encoding_keys.index(c) for c in list(id_label_seq_Dict[id].values())[0][0]] for id in Test[i]]
@@ -309,9 +309,9 @@ def preprocess_data2(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/tes
     '''
     This is not slit version
     '''
-    print("loading the gene object")
+    # print("loading the gene object")
     gene_data = Gene_data.load_sequence(dataset, left, right, RNA_type=RNA_type)
-    print("after loading the gene object")
+    # print("after loading the gene object")
     id_label_seq_Dict = get_id_label_seq_Dict(gene_data)
 
     maxpoolingmax = int((left+right)/pooling_size)
@@ -322,15 +322,15 @@ def preprocess_data2(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/tes
         pattern = r"RNA_category:([^,\n]+)"
         RNA_types = re.findall(pattern, string)
         RNA_types = list(sorted(set(RNA_types)))
-        print("RNA_types", RNA_types)
+        # print("RNA_types", RNA_types)
         seq_encoding_keys += RNA_types
         encoding_keys = seq_encoding_keys
-        print("new encoding list:", encoding_keys)
+        # print("new encoding list:", encoding_keys)
     else:
         encoding_keys = seq_encoding_keys
     
         
-    print('padding and indexing data')
+    # print('padding and indexing data')
         
     encoding_vectors = seq_encoding_vectors
     X_left = [[encoding_keys.index(c) for c in list(id_label_seq_Dict[id].values())[0][0]] for id in id_label_seq_Dict.keys()]
