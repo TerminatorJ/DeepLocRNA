@@ -12,7 +12,7 @@ def get_id_label_seq_Dict(gene_data):
          label = gene.label
         #  print("label:", label)
          gene_id = gene.id.strip()
-         print("gene id:", gene_id)
+         # print("gene id:", gene_id)
          id_label_seq_Dict[gene_id] = {}
          id_label_seq_Dict[gene_id][label]= (gene.seqleft,gene.seqright)
     
