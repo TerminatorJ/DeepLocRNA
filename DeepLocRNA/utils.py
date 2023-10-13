@@ -155,5 +155,5 @@ def GetRNAtype(dataset):
     
     pattern = r"RNA_category:([^,\n]+)"
     RNA_types = re.findall(pattern, string)
-    print("RNA_types:", list(sorted(set(RNA_types))))
+    # print("RNA_types:", list(sorted(set(RNA_types))))
     return list(sorted(set(RNA_types)))
