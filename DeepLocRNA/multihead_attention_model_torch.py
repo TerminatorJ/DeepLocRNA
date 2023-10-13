@@ -130,7 +130,7 @@ class DM3Loc_sequential(nn.Module):
         if mfes:
             new_encoding_obj = RNAembed(RNA_types = RNA_types)
             encoding_seq = new_encoding_obj()
-            print("new encoding_seq:", encoding_seq)
+            # print("new encoding_seq:", encoding_seq)
         embedding_vec = np.array(list(encoding_seq.values()), dtype=np.float32)
 
         self.embedding_layer = nn.Embedding(num_embeddings=len(embedding_vec),embedding_dim=len(embedding_vec[0]),_weight=torch.tensor(embedding_vec))
@@ -167,7 +167,7 @@ class DM3Loc_sequential(nn.Module):
         param_names = [param for param in init_params if param != 'self']
         for param_name in param_names:
             param_value = getattr(self, param_name)
-            print(f"{param_name}: {param_value}")
+            # print(f"{param_name}: {param_value}")
 
     def signal_preprocess(self, test, cutoff):
         test[test>cutoff] = 1
