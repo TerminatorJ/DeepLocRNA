@@ -19,7 +19,7 @@ class Gene_data:
         genes = []
         #count = 0
         path = dataset
-        print('Importing dataset {0}'.format(dataset))
+        #print('Importing dataset {0}'.format(dataset))
         with open(path, 'r') as f:
             index=0
             for line in f:
@@ -106,6 +106,6 @@ class Gene_data:
         if not predict:
            genes = genes[np.random.permutation(np.arange(len(genes)))]
         
-        print('Total number of samples:', genes.shape[0])
+        #print('Total number of samples:', genes.shape[0])
         return genes
 
