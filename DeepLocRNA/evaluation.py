@@ -135,8 +135,8 @@ class Evaluation:
             acc[i+1] = accuracy_score(y_test[:,i],[1 if x>0.5 else 0 for x in y_pred[:,i]])
             precision_sc[i+1] = precision_score(y_test[:,i],[1 if x>0.5 else 0 for x in y_pred[:,i]])
             recall_sc[i+1] = recall_score(y_test[:,i],[1 if x>0.5 else 0 for x in y_pred[:,i]])
-            print("y_test", str(i+1), y_test[:,i])
-            print("y_pred", str(i+1), y_pred[:,i])
+            # print("y_test", str(i+1), y_test[:,i])
+            # print("y_pred", str(i+1), y_pred[:,i])
 
 
 
@@ -150,14 +150,14 @@ class Evaluation:
         acc["micro"] = accuracy_score(y_test, y_pred_bi)
         time2 = time.time()
 
-        print("auprc:", average_precision)
-        print("roauc:", roc_auc)
-        print("F1 score:", F1_score)
-        print("acc score:", acc)
-        print("precision score:", precision_sc)
-        print("recall score:", recall_sc)
-        print("mcc score:", mcc_dict)
-        print("overall time elapse:", str(time2-time1))
+        # print("auprc:", average_precision)
+        # print("roauc:", roc_auc)
+        # print("F1 score:", F1_score)
+        # print("acc score:", acc)
+        # print("precision score:", precision_sc)
+        # print("recall score:", recall_sc)
+        # print("mcc score:", mcc_dict)
+        # print("overall time elapse:", str(time2-time1))
         return roc_auc
     def get_metrics_all(self, model=None, dataloader_test=None, RNA_index = None):
         all_y_pred = []
@@ -190,7 +190,7 @@ class Evaluation:
                 roc_auc = self.print_metrics(y_test[idx], y_pred[idx], RNA)
                 
             except:
-                print("empty:", RNA)
+                # print("empty:", RNA)
                 roc_auc = None
             roc_auc_dict[RNA] = roc_auc
         return roc_auc_dict
@@ -230,15 +230,15 @@ class Evaluation:
         recall_sc["micro"] = recall_score(y_test, y_pred_bi, average='micro')
         acc["micro"] = accuracy_score(y_test, y_pred_bi)
         time2 = time.time()
-        print("RNA type:", RNA_type)
-        print("auprc:", average_precision)
-        print("roauc:", roc_auc)
-        print("F1 score:", F1_score)
-        print("acc score:", acc)
-        print("precision score:", precision_sc)
-        print("recall score:", recall_sc)
-        print("mcc score:", mcc_dict)
-        print("overall time elapse:", str(time2-time1))
+        # print("RNA type:", RNA_type)
+        # print("auprc:", average_precision)
+        # print("roauc:", roc_auc)
+        # print("F1 score:", F1_score)
+        # print("acc score:", acc)
+        # print("precision score:", precision_sc)
+        # print("recall score:", recall_sc)
+        # print("mcc score:", mcc_dict)
+        # print("overall time elapse:", str(time2-time1))
         return roc_auc
 
 if __name__ == "__main__":
