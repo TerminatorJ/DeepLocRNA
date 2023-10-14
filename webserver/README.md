@@ -1,7 +1,7 @@
 # DeepLocRNA
 
 DeeplocRNA is a deep neural network that predict the RNA localization, enabling the prediction across 5 RNA species (mRNA, miRNA, lncRNA, snRNA, snoRNA) and different species (Human and Mouse). 
-If you are also interested in the protein localization, please refer to our protein version:
+If you are also interested in the protein localization, please refer to our protein version:  
 https://services.healthtech.dtu.dk/services/DeepLoc-1.0/
 or
 https://services.healthtech.dtu.dk/services/DeepLoc-2.0/
