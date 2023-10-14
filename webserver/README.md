@@ -5,9 +5,11 @@ DeeplocRNA is a deep neural network that predict the RNA localization, enabling 
 If you are also interested in the protein localization, please refer to our protein version:  
 https://services.healthtech.dtu.dk/services/DeepLoc-1.0/  
 or  
-https://services.healthtech.dtu.dk/services/DeepLoc-2.0/  
+https://services.healthtech.dtu.dk/services/DeepLoc-2.0/
+
 In this webserver, we support the input file in a ".fasta" format. Because of the limited computational resource, this webserver only  
 supports limited sequence prediction.  
+
 Alternatively, if you want to predict a large number of RNA sequence, please download our standalone tool by  
 ```
 pip install DeepLocRNA
