@@ -317,7 +317,11 @@ def preprocess_data2(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/tes
     maxpoolingmax = int((left+right)/pooling_size)
     global seq_encoding_keys
     if RNA_type == "allRNA":
-        with open(dataset, "r") as f1:
+        root_dir=os.getcwd()
+        pj=lambda *path: os.path.abspath(os.path.join(*path))
+        
+        overall_dataset = pj(root_dir, "data", "allRNA", "allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta")
+        with open(overall_dataset, "r") as f1:
             string = f1.read()
         pattern = r"RNA_category:([^,\n]+)"
         RNA_types = re.findall(pattern, string)
