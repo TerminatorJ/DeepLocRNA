@@ -17,7 +17,7 @@ output_type: markdown
 arguments: 
 
     -   key: --fasta
-        description: 'Input FASTA sequences to predict on.'
+        description: 'Input FASTA sequences to predict on. please put your RNA type on the headers. e.g. RNA_category:mRNA'
         key_value_separator: ' '
         default_value: 'example.fasta'
         type: text-file
