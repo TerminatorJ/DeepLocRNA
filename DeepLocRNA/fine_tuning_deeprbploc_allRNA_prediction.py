@@ -12,7 +12,7 @@ import pandas as pd
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-def predict(fasta, batch_size = 2):
+def predict(fasta, rna_types, batch_size = 2):
 
     #generating the data
     X, mask_label, ids = preprocess_data2(left=4000, right=4000, dataset=fasta, padmod="after",pooling_size=8, foldnum=1, pooling=True, RNA_type = "RNA", RNA_tag = False)
@@ -98,10 +98,11 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--fasta', type=str, default=None, help='The input fasta to be predicted')
+    parser.add_argument('--rna_types', type=str, default=None, help='The input fasta to be predicted')
     # parser.add_argument('--device', type=str, default="cpu", help='The device to process the sequence prediction')
     args = parser.parse_args()
 
-    predict(args.fasta)
+    predict(args.fasta, args.rna_types)
     print("Please download the output by pressing the download button, you will find the output.csv file afterwards!!!")
 
 
