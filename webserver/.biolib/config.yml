@@ -17,10 +17,24 @@ output_type: markdown
 arguments: 
 
     -   key: --fasta
-        description: 'Input FASTA sequences to predict on. please put your RNA type on the headers. e.g. RNA_category:mRNA'
+        description: 'Input FASTA sequences to predict on. if you want to predict a mixture of RNA species, please put your RNA type on the headers. e.g. RNA_category:mRNA'
         key_value_separator: ' '
         default_value: 'example.fasta'
         type: text-file
+        required: true
+
+
+    -   key: --rna_types
+        description: 'Select target RBP'
+        key_value_separator: ' '
+        default_value: 'mRNA'
+        type: dropdown
+        options:
+           'mRNA': 'mRNA'
+           'miRNA': 'miRNA'
+           'lncRNA': 'lncRNA'
+           'snRNA': 'snRNA'
+           'snoRNA': 'snoRNA'
         required: true
 license_file: LICENSE
 
