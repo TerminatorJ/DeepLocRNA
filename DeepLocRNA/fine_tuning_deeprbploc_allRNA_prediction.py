@@ -15,8 +15,8 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 def predict(fasta, rna_types, batch_size = 2):
 
     #generating the data
-    X, mask_label, ids = preprocess_data2(left=4000, right=4000, dataset=fasta, padmod="after",pooling_size=8, foldnum=1, pooling=True, RNA_type = "RNA", RNA_tag = False)
-    X_tag = preprocess_data2(left=4000, right=4000, dataset=fasta, padmod="after",pooling_size=8, foldnum=1, pooling=True, RNA_type = "RNA", RNA_tag = False)[0]
+    X, mask_label, ids = preprocess_data2(left=4000, right=4000, dataset=fasta, padmod="after",pooling_size=8, foldnum=1, pooling=True, RNA_type = "allRNA", RNA_tag = False)
+    X_tag = preprocess_data2(left=4000, right=4000, dataset=fasta, padmod="after",pooling_size=8, foldnum=1, pooling=True, RNA_type = "allRNA", RNA_tag = True)[0]
 
     #building dataloader
     X = torch.from_numpy(X).to(device, torch.float)
