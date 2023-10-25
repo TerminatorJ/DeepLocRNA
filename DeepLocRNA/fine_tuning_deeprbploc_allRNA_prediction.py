@@ -74,8 +74,11 @@ def predict(fasta, batch_size = 2):
     #doing the prediction
     #doing the prediction
     all_y_pred_list = []
-
+    counter = 0
     for i, batch in enumerate(dataloader):
+
+        counter = (i+1)*batch_size
+        assert counter <= 200, "WARNING: The number of input sequences should not larger than 200!!!"
         X, X_tag, mask = batch
         y_pred = DeepLocRNA_model.forward(X, mask, X_tag)
         y_pred = y_pred.detach().cpu().numpy()
