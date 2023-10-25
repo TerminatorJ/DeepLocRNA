@@ -42,12 +42,13 @@ def label_dist(dist):
 #     (mfe_struct, mfe) = fc.mfe()
 #     return mfe_struct
 
-def get_new_seq(Train, Xall, encoding_keys, left, right):
+def get_new_seq(input_types, Xall, encoding_keys, left, right):
     Xall2 = []
-    for id_tag,seq in zip(Train, Xall):
-        pattern = r'RNA_category:([^,\n]+)'
-        RNA_types = re.findall(pattern, id_tag)
-        RNA_tag = encoding_keys.index(RNA_types[0])
+    for seq in Xall:
+        # pattern = r'RNA_category:([^,\n]+)'
+        # RNA_types = re.findall(pattern, id_tag)
+        # RNA_tag = encoding_keys.index(RNA_types[0])
+        RNA_tag = encoding_keys.index(input_types)
         seq2 = np.insert(seq, 0, RNA_tag)
         if len(seq) < (left+right):
             Xall2.append(seq2)
