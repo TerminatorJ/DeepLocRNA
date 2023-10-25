@@ -305,7 +305,7 @@ def preprocess_data(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/test
     return Xtrain,Ytrain,Train_mask_label,Xtest,Ytest,Test_mask_label,Xval,Yval,Val_mask_label, encoding_keys, encoding_vectors
 
 
-def preprocess_data2(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/testdata/modified_multilabel_seq_nonredundent.fasta',padmod='center',pooling_size=8, foldnum=4, pooling=True, RNA_type = None, RNA_tag = False):
+def preprocess_data2(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/testdata/modified_multilabel_seq_nonredundent.fasta',padmod='center',pooling_size=8, foldnum=4, pooling=True, RNA_type = None, RNA_tag = False, input_types = "mRNA"):
     '''
     This is not slit version
     '''
@@ -346,7 +346,7 @@ def preprocess_data2(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/tes
     #adding additional tag for each sequence
     # print("Xall before:", np.array(Xall).shape, "example:", Xall[0])
     if RNA_tag:
-        Xall = get_new_seq(list(id_label_seq_Dict.keys()), Xall, encoding_keys, left, right)
+        Xall = get_new_seq(input_types, Xall, encoding_keys, left, right)
     # print("Xall shape:", np.array(Xall).shape, Xall[0])
 
     # print("before padding:", Xall[12])
