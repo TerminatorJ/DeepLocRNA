@@ -99,7 +99,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--fasta', type=str, default=None, help='The input fasta to be predicted')
-    parser.add_argument('--rna_types', type=str, default=None, help='The input fasta to be predicted')
+    parser.add_argument('--rna_types', type=str, default=None, help='The RNA types to be predicted')
     # parser.add_argument('--device', type=str, default="cpu", help='The device to process the sequence prediction')
     args = parser.parse_args()
 
