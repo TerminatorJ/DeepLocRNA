@@ -316,7 +316,7 @@ def preprocess_data2(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/tes
 
     maxpoolingmax = int((left+right)/pooling_size)
     global seq_encoding_keys
-    if RNA_type == "allRNA":
+    if RNA_type:
         root_dir=os.getcwd()
         pj=lambda *path: os.path.abspath(os.path.join(*path))
         
