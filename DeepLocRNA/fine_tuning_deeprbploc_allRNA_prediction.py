@@ -16,8 +16,8 @@ def predict(fasta, rna_types, batch_size = 2):
 
     #generating the data
     input_types = rna_types
-    X, mask_label, ids = preprocess_data2(left=4000, right=4000, dataset=fasta, padmod="after",pooling_size=8, foldnum=1, pooling=True, RNA_type = "allRNA", RNA_tag = False, input_types = input_types)
-    X_tag = preprocess_data2(left=4000, right=4000, dataset=fasta, padmod="after",pooling_size=8, foldnum=1, pooling=True, RNA_type = "allRNA", RNA_tag = True, input_types = input_types)[0]
+    X, mask_label, ids = preprocess_data2(left=4000, right=4000, dataset=fasta, padmod="after",pooling_size=8, foldnum=1, pooling=True, RNA_type = "mRNA", RNA_tag = False, input_types = input_types)
+    X_tag = preprocess_data2(left=4000, right=4000, dataset=fasta, padmod="after",pooling_size=8, foldnum=1, pooling=True, RNA_type = "mRNA", RNA_tag = True, input_types = input_types)[0]
 
     #building dataloader
     X = torch.from_numpy(X).to(device, torch.float)
