@@ -85,6 +85,10 @@ def predict(fasta, rna_types, batch_size = 2):
         y_pred = y_pred.detach().cpu().numpy()
         all_y_pred_list.append(y_pred)
 
+    #thredshold of each compartment
+    #0.7551 for the nucleus, 0.9796 for exosome, 0.2245 for cytosol, 0.2857 for ribosome, 0.3061 for membrane, and 0.1837 for the ER.
+    thredhols = {"nucleus": 0.7551, "exosome": 0.9796, "cytosol": 0.2245, "ribosome": 0.2857, "membrane": 0.3061, "ER": 0.1837}
+    
     # Convert the list of arrays to a single NumPy array
     all_y_pred = np.vstack(all_y_pred_list)
     
@@ -100,7 +104,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--fasta', type=str, default=None, help='The input fasta to be predicted')
     parser.add_argument('--rna_types', type=str, default=None, help='The RNA types to be predicted')
-    # parser.add_argument('--device', type=str, default="cpu", help='The device to process the sequence prediction')
     args = parser.parse_args()
 
     predict(args.fasta, args.rna_types)
