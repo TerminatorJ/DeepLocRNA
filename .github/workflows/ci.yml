@@ -34,7 +34,7 @@ jobs:
                     # docker run deeplocrna-docker:latest nvidia-smi
 
             -   name: Install BioLib CLI
-                run: pip3 install pybiolib
+                run: pip3 install -U pybiolib
 
             -   name: Publish new version to BioLib if on main branch
                 #if: github.ref == 'refs/heads/developer2'
