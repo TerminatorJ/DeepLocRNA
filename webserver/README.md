@@ -18,7 +18,7 @@ starts,ends
 10,100
 50,100
 ```
-Where 10 to 100 is the interval that you want to get the attribution scores.
+Where 10 to 100 is the interval that you want to get the attribution scores (Warning: you should not define the interval larger than 1000nt).
 
 
 Alternatively, if you want to predict a large number of RNA sequence, please download our standalone tool by  
