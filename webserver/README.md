@@ -12,7 +12,7 @@ If you choose "plot" as True, a full-length attribution will be generated for yo
 
 Alternatively, if you wish to get the precise nucleotide contribution, please choose "att_config" as True, and define the configure file yourself as "att_config.csv" before input in the input frame.
 
-att_config can be defined as below (can also be downloaded from: https://github.com/TerminatorJ/DeepLocRNA/tree/main/DeepLocRNA/att_config.csv)
+att_config can be defined as below (can also be downloaded from:https://github.com/TerminatorJ/DeepLocRNA/tree/main/DeepLocRNA/att_config.csv)
 ```
 starts,ends
 10,100
