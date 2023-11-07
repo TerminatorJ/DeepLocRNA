@@ -9,17 +9,13 @@ Step 1: generating the input data from your .fasta file
 
 save normal data
 <pre>
-```
 python ./fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta  
-```
 </pre>
 
 save data with RNA tag
 
 <pre>
-```
 python ./fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta --RNA_tag
-```
 </pre>
 Afterwards, there will be both "*_X_tag.npy" and "*_X.npy" in the "data/dataname/" folder.
 
