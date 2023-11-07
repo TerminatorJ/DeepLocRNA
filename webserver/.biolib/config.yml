@@ -25,7 +25,7 @@ arguments:
 
 
     -   key: --rna_types
-        description: 'Select target RBP'
+        description: 'Select RNA types'
         key_value_separator: ' '
         default_value: 'mRNA'
         type: dropdown
@@ -36,6 +36,24 @@ arguments:
            'snRNA': 'snRNA'
            'snoRNA': 'snoRNA'
         required: true
+
+    -   key: --plot
+        description: 'Whether to plot the full-length attribution'
+        key_value_separator: ' '
+        default_value: False
+        type: toggle
+        options:
+           'on': 'True'
+           'off': 'False'   
+        required: true
+
+    -   key: --att_config
+        description: 'self-defined file to plot the precise attribution'
+        key_value_separator: ' '
+        default_value: None
+        type: text-file
+        required: true
+
 license_file: LICENSE
 
 citation:
