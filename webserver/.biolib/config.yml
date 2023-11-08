@@ -41,7 +41,7 @@ arguments:
     -   key: --plot
         description: 'Whether to plot the full-length attribution'
         key_value_separator: ' '
-        default_value: False
+        default_value: "False"
         type: toggle
         options:
            'on': 'True'
