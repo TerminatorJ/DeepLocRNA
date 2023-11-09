@@ -22,23 +22,33 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 refs = np.array(["Nucleus","Exosome","Cytosol","Cytoplasm","Ribosome","Membrane","Endoplasmic reticulum", "Microvesicle", "Mitochondrion"])
 #thredshold of each compartment
 #0.7551 for the nucleus, 0.9796 for exosome, 0.2245 for cytosol, 0.2857 for ribosome, 0.3061 for membrane, and 0.1837 for the ER.
-all_thredsholds = {"mRNA":{"Nucleus": 0.7551, "Exosome": 0.9796, "Cytosol": 0.2245, "Ribosome": 0.2857, "Membrane": 0.3061, "Endoplasmic reticulum": 0.1837},
-                "miRNA": {"Nucleus": 0.0204, "Exosome": 0.9592, "Cytosol": 0.0204, "Microvesicle": 0.8776, "Mitochondrion": 0.0204},
+all_thredsholds = {"Human":{"mRNA":{"Nucleus": 0.7551, "Exosome": 0.9796, "Cytosol": 0.2245, "Ribosome": 0.2857, "Membrane": 0.3061, "Endoplasmic reticulum": 0.1837},
+                "miRNA": {"Nucleus": 0.0204, "Exosome": 0.9592, "Cytoplasm": 0.0204, "Microvesicle": 0.8776, "Mitochondrion": 0.0204},
                 "lncRNA": {"Nucleus": 0.1020, "Exosome": 0.9796, "Cytosol": 0.2041, "Membrane": 0.0816},
-                "snoRNA": {"Nucleus": 0.5714, "Exosome": 0.0000, "Cytosol": 0.0612, "Microvesicle": 0.0000}}
+                "snoRNA": {"Nucleus": 0.5714, "Exosome": 0.0000, "Cytoplasm": 0.0612, "Microvesicle": 0.0000}}, 
+                "Mouse": {"mRNA":{"Nucleus": 0.4694, "Exosome": 0.6327, "Cytoplasm": 0.2653}, 
+                "miRNA":{"Nucleus": 0.1837, "Exosome": 0.7347, "Mitochondrion": 0.4082},
+                "lncRNA": {"Nucleus": 0.3673, "Exosome": 0.1837, "Cytoplasm": 0.2245}}}
 
 
 def pass_thred(pred, thred):
     #get meassured localizations
     pred_str = []
+    # print(pred, thred)
     locs = list(thred.keys())
-    loc_idx = np.where(np.isin(locs, refs))[0]
+    # print("locs:", locs)
+    loc_idx = np.where(np.isin(refs, locs))[0]
+    # print("loc_idx", loc_idx)
     loc_pred = pred[loc_idx]
+    # print("loc_pred", loc_pred)
     for idx, v in enumerate(loc_pred):
 
         if v > thred[locs[idx]]:
+            # print(v, thred[locs[idx]])
             pred_str.append(locs[idx])
     pred_str = "/".join(pred_str)
+    #replace cytoplasm as cytosol 
+    pred_str = pred_str.replace("Cytoplasm", "Cytosol")
     return pred_str
 
 def get_att(att):
@@ -57,7 +67,7 @@ def squeeze(array):
 
 def predict(fasta, rna_types, batch_size = 2, plot = "False", att_config = None, species = "Human"):
     #get specific threshold
-    type_thred = all_thredsholds[rna_types]
+    type_thred = all_thredsholds[species][rna_types]
     #generating the data
     input_types = rna_types
     X, mask_label, ids = preprocess_data2(left=4000, right=4000, dataset=fasta, padmod="after",pooling_size=8, foldnum=1, pooling=True, RNA_type = "singleRNA", RNA_tag = False, input_types = input_types, species = species)
@@ -172,7 +182,9 @@ def predict(fasta, rna_types, batch_size = 2, plot = "False", att_config = None,
     # Convert the list of arrays to a single NumPy array
     all_y_pred = np.vstack(all_y_pred_list)
     #getting the values that pass the thredholds
+    # print(all_y_pred)
     results_str = [pass_thred(pred, type_thred) for pred in all_y_pred]
+    # print(results_str)
 
     result_df = pd.DataFrame(data = all_y_pred, columns = refs, index = ids)
     #embedding the prediction string
