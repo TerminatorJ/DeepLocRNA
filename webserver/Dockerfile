@@ -16,8 +16,8 @@ ENV PATH="/opt/conda/bin:${PATH}"
 
 
 WORKDIR /home/DeepLocRNA
-df -h
 
+CMD [df -h]
 
 COPY DeepLocRNA DeepLocRNA
 COPY setup.py .
