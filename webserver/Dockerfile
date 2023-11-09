@@ -24,7 +24,7 @@ COPY setup.py .
 COPY README.md .
 COPY requirements.txt .
 COPY parnet-develop parnet-develop
-RUN pip install -r --no-cache-dir requirements.txt # server has additional requirements
+RUN pip install --no-cache-dir -r requirements.txt # server has additional requirements
 RUN pip install ./parnet-develop
 
 COPY webserver/run.sh .
