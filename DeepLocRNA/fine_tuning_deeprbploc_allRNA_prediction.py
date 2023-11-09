@@ -55,13 +55,13 @@ def squeeze(array):
         return np.expand_dims(array, 0)
 
 
-def predict(fasta, rna_types, batch_size = 2, plot = "False", att_config = None):
+def predict(fasta, rna_types, batch_size = 2, plot = "False", att_config = None, species = "Human"):
     #get specific threshold
     type_thred = all_thredsholds[rna_types]
     #generating the data
     input_types = rna_types
-    X, mask_label, ids = preprocess_data2(left=4000, right=4000, dataset=fasta, padmod="after",pooling_size=8, foldnum=1, pooling=True, RNA_type = "singleRNA", RNA_tag = False, input_types = input_types)
-    X_tag = preprocess_data2(left=4000, right=4000, dataset=fasta, padmod="after",pooling_size=8, foldnum=1, pooling=True, RNA_type = "singleRNA", RNA_tag = True, input_types = input_types)[0]
+    X, mask_label, ids = preprocess_data2(left=4000, right=4000, dataset=fasta, padmod="after",pooling_size=8, foldnum=1, pooling=True, RNA_type = "singleRNA", RNA_tag = False, input_types = input_types, species = species)
+    X_tag = preprocess_data2(left=4000, right=4000, dataset=fasta, padmod="after",pooling_size=8, foldnum=1, pooling=True, RNA_type = "singleRNA", RNA_tag = True, input_types = input_types, species = species)[0]
 
     #building dataloader
     X = torch.from_numpy(X).to(device, torch.float)
@@ -76,7 +76,12 @@ def predict(fasta, rna_types, batch_size = 2, plot = "False", att_config = None)
 
     #loading the model
     current_path = os.getcwd()
-    ckp_path = os.path.join(current_path, "Result", "allRNA_finetuning", "checkpoints_allRNA_False_20_0_human_True_17709_best.ckpt")
+    if species == "Human":
+        ckp_path = os.path.join(current_path, "Result", "allRNA_finetuning", "checkpoints_allRNA_False_20_0_human_True_17709_best.ckpt")
+    elif species == "Mouse":
+        ckp_path = os.path.join(current_path, "Result", "allRNA_finetuning", "checkpoints_allRNA_False_20_0_mouse_True_13107_best.ckpt")
+
+
     hyperparams_1 = {
                 'fc_dim': 500,
                 'weight_decay': 1e-5,
@@ -105,7 +110,8 @@ def predict(fasta, rna_types, batch_size = 2, plot = "False", att_config = None)
                 'focal' : False,
                 "nb_classes": 9,
                 "RNA_type" : "allRNA",
-                "dim_attention" : 50
+                "dim_attention" : 50,
+                "species": species
                 }
        
     gin.parse_config_file('./config.gin')
@@ -184,9 +190,10 @@ if __name__ == "__main__":
     parser.add_argument('--rna_types', type=str, default=None, help='The RNA types to be predicted')
     parser.add_argument('--plot', type=str, default="False", help='Whether generating the attribution plot')
     parser.add_argument('--att_config', type=str, default=None, help='The file that is used to define in which position to display IG score')
+    parser.add_argument('--species', type=str, default="Human", help='The species you want to predict')
     args = parser.parse_args()
 
-    predict(fasta = args.fasta, rna_types = args.rna_types, plot = args.plot, att_config = args.att_config)
+    predict(fasta = args.fasta, rna_types = args.rna_types, plot = args.plot, att_config = args.att_config, species = args.species)
     print("Please download the output by pressing the download button, you will find the output.csv file afterwards!!!")
 
 

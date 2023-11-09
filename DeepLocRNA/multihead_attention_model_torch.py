@@ -242,11 +242,17 @@ class myModel1(pl.LightningModule):
                  headnum, Att_regularizer_weight, normalizeatt, sharp_beta, attmod, W1_regularizer, 
                  activation, activation_att, attention, pool_type, cnn_scaler, att_type, input_dim, hidden, 
                  parnet_dim, pooling_opt, filter_length1, release_layers, prediction, fc_layer, mode, mfes,
-                 lr, gradient_clip, class_weights, optimizer, weight_decay, OHEM, loss_type, add_neg, focal, RNA_type, att):
+                 lr, gradient_clip, class_weights, optimizer, weight_decay, OHEM, loss_type, add_neg, focal, RNA_type, att, species):
         super(myModel1, self).__init__()
         #only used to extract the RNA types
         current_path = os.getcwd()
-        dataset_get_types = os.path.join(current_path, "data", "allRNA", "allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta")
+        pj=lambda *path: os.path.abspath(os.path.join(*path))
+        root_dir=os.getcwd()
+        if species == "Human":
+            dataset_get_types = pj(root_dir, "data", "allRNA", "allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta")
+        elif species == "Mouse":
+            dataset_get_types = pj(root_dir, "data", "allRNA", "allRNA_all_mouse_data_seq_deduplicated.fasta")
+        # dataset_get_types = os.path.join(current_path, "data", "allRNA", "allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta")
         RNA_types = GetRNAtype(dataset = dataset_get_types)
         self.network = DM3Loc_sequential(drop_cnn, drop_flat, drop_input, pooling_size, fc_dim, nb_classes, dim_attention,
                  headnum, Att_regularizer_weight, normalizeatt, sharp_beta, attmod, W1_regularizer, 

@@ -55,6 +55,16 @@ arguments:
         type: text-file
         required: true
 
+    -   key: --species
+        description: 'Select species'
+        key_value_separator: ' '
+        default_value: 'Human'
+        type: dropdown
+        options:
+           'Human': 'Human'
+           'Mouse': 'Mouse'
+        required: true
+
 license_file: LICENSE
 
 citation:

@@ -305,7 +305,7 @@ def preprocess_data(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/test
     return Xtrain,Ytrain,Train_mask_label,Xtest,Ytest,Test_mask_label,Xval,Yval,Val_mask_label, encoding_keys, encoding_vectors
 
 
-def preprocess_data2(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/testdata/modified_multilabel_seq_nonredundent.fasta',padmod='center',pooling_size=8, foldnum=4, pooling=True, RNA_type = None, RNA_tag = False, input_types = "mRNA"):
+def preprocess_data2(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/testdata/modified_multilabel_seq_nonredundent.fasta',padmod='center',pooling_size=8, foldnum=4, pooling=True, RNA_type = None, RNA_tag = False, input_types = "mRNA", species = "Human"):
     '''
     This is not slit version
     '''
@@ -319,8 +319,11 @@ def preprocess_data2(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/tes
     if RNA_type:
         root_dir=os.getcwd()
         pj=lambda *path: os.path.abspath(os.path.join(*path))
-        
-        overall_dataset = pj(root_dir, "data", "allRNA", "allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta")
+        if species == "Human":
+            overall_dataset = pj(root_dir, "data", "allRNA", "allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta")
+        elif species == "Mouse":
+            overall_dataset = pj(root_dir, "data", "allRNA", "allRNA_all_mouse_data_seq_deduplicated.fasta")
+
         with open(overall_dataset, "r") as f1:
             string = f1.read()
         pattern = r"RNA_category:([^,\n]+)"
