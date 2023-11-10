@@ -2,7 +2,7 @@
 # DeepLocRNA
 
 ## Introduction
-DeeplocRNA is a deep neural network that predict the RNA localization, enabling the prediction across 4 RNA species (mRNA, miRNA, lncRNA, snoRNA) and different species (Human and Mouse). 
+DeeplocRNA is a deep neural network that predicts the RNA localization, enabling the prediction across 4 RNA types (mRNA, miRNA, lncRNA, snoRNA) and different species (Human and Mouse). 
 
 
 
