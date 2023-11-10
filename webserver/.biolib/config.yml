@@ -14,6 +14,8 @@ modules: #This section defines the modules for your BioLib application. Modules 
         # default_machine: 'gpu.small'
         # gpu: required
 output_type: markdown
+main_output_file: output.txt
+
 arguments: 
 
     -   key: --fasta
