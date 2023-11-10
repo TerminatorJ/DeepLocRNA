@@ -11,7 +11,6 @@ To run the model, you should download DeepLocRNA via git or pip
 
 ```
 pip install git+https://github.com/TerminatorJ/DeepLocRNA.git
-
 ```
 install conda in your local machine
 
