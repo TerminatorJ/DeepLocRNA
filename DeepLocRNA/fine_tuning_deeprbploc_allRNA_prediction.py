@@ -168,14 +168,14 @@ def predict(fasta, rna_types, batch_size = 2, plot = "False", att_config = None,
                     attributions = attributions.detach().cpu().numpy()
                     att, flat_att = get_att(attributions)
                     fig1 = plot_line(flat_att[:length])
-                    fig1.savefig("./motif_line_plot_%s_%s.png" % (items, t), dpi=60)
+                    fig1.savefig("./output/motif_line_plot_%s_%s.png" % (items, t), dpi=300)
                     if att_config is not None:
                         att_cfg = pd.read_csv(att_config, skipinitialspace=True)
                         s = att_cfg["starts"][idx]
                         e = att_cfg["ends"][idx]
                         assert e-s <= 1000, "the defined motif should shorter than 1000nt"
                         fig2 = plot_motif(att[s:e+1], figsize=(16, 6), start = s)#to show complete x-axis
-                        fig2.savefig("./motif_log_%s_%s.png" % (items, t), dpi=60)
+                        fig2.savefig("./output/motif_log_%s_%s.png" % (items, t), dpi=300)
                     
 
 
@@ -189,7 +189,7 @@ def predict(fasta, rna_types, batch_size = 2, plot = "False", att_config = None,
     result_df = pd.DataFrame(data = all_y_pred, columns = refs, index = ids)
     #embedding the prediction string
     result_df["Prediction"] = results_str
-    result_df.to_csv(os.path.join(current_path, "output.csv"))
+    result_df.to_csv(os.path.join(current_path, "output", "output.csv"))
 
 
 
