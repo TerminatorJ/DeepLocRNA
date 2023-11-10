@@ -189,7 +189,7 @@ def predict(fasta, rna_types, batch_size = 2, plot = "False", att_config = None,
     result_df = pd.DataFrame(data = all_y_pred, columns = refs, index = ids)
     #embedding the prediction string
     result_df["Prediction"] = results_str
-    result_df.to_csv(os.path.join(current_path, "output", "output.txt"), sep=" ")
+    result_df.to_csv(os.path.join(current_path, "output.txt"), sep=" ")
 
 
 
