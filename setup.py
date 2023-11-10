@@ -6,7 +6,7 @@ with open('./requirements.txt', 'r') as f:
 
 setup(
     name='DeepLocRNA',
-    version='0.0.1',
+    version='0.0.2',
     author='TerminatorJ',
     author_email='wangjun19950708@gmail.com',
     description='Predicting RNA localization based on RBP binding information',
