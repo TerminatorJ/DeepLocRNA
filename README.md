@@ -7,10 +7,13 @@ DeeplocRNA is a deep neural network that predicts the RNA localization, enabling
 
 ### Environment preperation
 
-To run the model, you should download DeepLocRNA via git or pip
+To run the model, you should download DeepLocRNA via git or pypi
 
 ```
+From git
 pip install git+https://github.com/TerminatorJ/DeepLocRNA.git
+or from pypi
+pip install DeepLocRNA
 ```
 install conda in your local machine
 
