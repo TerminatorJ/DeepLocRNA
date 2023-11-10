@@ -11,6 +11,11 @@ Please make sure anaconda is installed in your local machine, create a new worki
 ```
 conda create -n DeepLocRNA python=3.8
 ```
+Enter the new created environment
+```
+source activate deepLocRNA
+```
+
 
 To run the model, you should download DeepLocRNA via git or pypi
 
@@ -20,7 +25,7 @@ pip install git+https://github.com/TerminatorJ/DeepLocRNA.git
 or from pypi
 pip install DeepLocRNA
 ```
-install conda in your local machine
+
 
 
 
