@@ -4,7 +4,7 @@ import sys
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from preprocessing import *
-sys.path.insert(0, "./data")
+# sys.path.insert(0, "./data")
 import torch
 from multihead_attention_model_torch import *
 import gin
