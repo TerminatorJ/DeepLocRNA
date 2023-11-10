@@ -7,6 +7,11 @@ DeeplocRNA is a deep neural network that predicts the RNA localization, enabling
 
 ### Environment preperation
 
+Please make sure anaconda is installed in your local machine, create a new working environment to run DeepLocRNA
+```
+conda create -n DeepLocRNA python=3.8
+```
+
 To run the model, you should download DeepLocRNA via git or pypi
 
 ```
