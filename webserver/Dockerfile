@@ -20,7 +20,7 @@ FROM continuumio/miniconda3
 
 WORKDIR /home/DeepLocRNA
 
-CMD [df -h]
+CMD ["df", "-h"]
 
 COPY DeepLocRNA DeepLocRNA
 COPY setup.py .
