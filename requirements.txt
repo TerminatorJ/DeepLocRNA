@@ -8,7 +8,7 @@ pandas==1.4.4
 Pillow==9.4.0
 pytorch_lightning==1.9.4
 scikit_learn==1.0.2
-torch==1.12.1
+torch==1.13.1
 torchinfo==1.7.2
 torchsummary==1.5.1
 torchvision==0.14.1
