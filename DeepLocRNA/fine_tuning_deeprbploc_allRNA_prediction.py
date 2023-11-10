@@ -173,7 +173,8 @@ def predict(fasta, rna_types, batch_size = 2, plot = "False", att_config = None,
                         att_cfg = pd.read_csv(att_config, skipinitialspace=True)
                         s = att_cfg["starts"][idx]
                         e = att_cfg["ends"][idx]
-                        assert e-s <= 1000, "the defined motif should shorter than 1000nt"
+                        if e-s <= 1000:
+                            print("the defined motif is longer than 1000nt")
                         fig2 = plot_motif(att[s:e+1], figsize=(16, 6), start = s)#to show complete x-axis
                         fig2.savefig("./output/motif_log_%s_%s.png" % (items, t), dpi=300)
                     
