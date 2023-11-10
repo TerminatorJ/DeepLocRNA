@@ -20,7 +20,7 @@ FROM continuumio/miniconda3
 
 WORKDIR /home/DeepLocRNA
 
-CMD ["df", "-h"]
+CMD ["sh", "-c", "df -h && docker info | grep 'Mem'"]
 
 COPY DeepLocRNA DeepLocRNA
 COPY setup.py .
