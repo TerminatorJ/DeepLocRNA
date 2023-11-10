@@ -5,6 +5,17 @@
 DeeplocRNA is a deep neural network that predicts the RNA localization, enabling the prediction across 4 RNA types (mRNA, miRNA, lncRNA, snoRNA) and different species (Human and Mouse). 
 
 
+### Environment preperation
+
+To run the model, you should download DeepLocRNA via git or pip
+
+```
+pip install git+https://github.com/TerminatorJ/DeepLocRNA.git
+
+```
+install conda in your local machine
+
+
 
 ## Train the model
 if you want to train the model youself, please follow the following steps
