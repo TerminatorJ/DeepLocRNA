@@ -1,0 +1,3 @@
+ Nucleus Exosome Cytosol Cytoplasm Ribosome Membrane "Endoplasmic reticulum" Microvesicle Mitochondrion Prediction
+>test1 0.70906854 0.987761 0.10313917 0.44764137 0.2345261 0.07670053 0.10740798 7.4215826e-08 0.00018649924 Exosome
+>test2 0.88501054 0.99588543 0.23877509 0.7527177 0.21457298 0.3212132 0.08635684 4.226495e-09 8.0979604e-05 Nucleus/Exosome/Cytosol/Membrane
