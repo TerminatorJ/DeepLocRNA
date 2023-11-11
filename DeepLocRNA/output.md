@@ -1,1 +1,1 @@
-![Predicted results](output.txt)
+[Predicted results](output.txt)
