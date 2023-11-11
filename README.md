@@ -102,6 +102,12 @@ python ./fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_hum
 ```
 Alternatively, DDP (data distributed parallel) strategy can be use to use multiple GPUs to train the model locally
 
+you can use DDP by commenting out this line in "fine_tuning_deeprbploc_allRNA.py"
+
+<pre>
+
+</pre>
+
 ```
 python ./fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta --load_data --gpu_num 4 --species human --batch_size 8 --flatten_tag  --gradient_clip --loss_type BCE  --jobnum 001 --species Human --DDP
 ```
