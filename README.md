@@ -12,6 +12,7 @@ Please make sure anaconda is installed in your local machine, create a new worki
 conda create -n DeepLocRNA python=3.8
 <pre>
 Enter the new created environment
+  
 <pre>
 source activate deepLocRNA
 <pre>
