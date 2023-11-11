@@ -70,7 +70,7 @@ unzip main.zip
 ### Step 3: Save encoded data
 
 ```
-cd ./DeepLocRNA
+cd ./DeepLocRNA-main/DeepLocRNA
 ```
   
 ```
