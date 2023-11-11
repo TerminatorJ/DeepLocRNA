@@ -91,26 +91,27 @@ To train the model locally, RBP pre-trained model should be loaded first.
 pip install ../parnet-develop
 ```
 
-
-
 We provide two options to train the model
 
-First, you can use standard training strategy, using single GPU (or multiple GPUs) to train the model. It is worth note that the training is entangled with 5-folds as default, which will repeat 5 times to go through the data.
+First, you can use standard training strategy, using single GPU to train the model. It is worth note that the training is bonded with 5-folds as default, which will repeat 5 times to go through the data.
 
 ```
 python ./fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta --load_data --gpu_num 1 --species human --batch_size 8 --flatten_tag  --gradient_clip --loss_type BCE  --jobnum 001 --species Human
 ```
-Alternatively, DDP (data distributed parallel) strategy can be use to use multiple GPUs to train the model locally
 
-you can use DDP by commenting out this line in "fine_tuning_deeprbploc_allRNA.py"
+Arguments for training
+Long                    |  Description
+------------------------|  ------------
+`--dataset`             |  Path to the input fasta file, which is a mixture of different RNA types. Formatted according to [the input format](#input-format).
+`--load_data`           |  loading the saved data, you should add this argument after generating X.npy and X_tag.npy.
+`--gpu_num`             |  The number of gpus you want to use while training the model.
+`--species`             |  The species you want to predict
+`--batch_size`          |  The batch size while training the model for each step.
+`--flatten_tag`         |  Add this tag to enable multi-RNA training.
+`--gradient_clip`       |  whether using gradient clip to make the training process stable.
+`--loss_type`           |  The loss function that used to train the model. Default: BCE.
+`--jobnum`              |  The identified number that represents the run of each training job.
 
-<pre>
-
-</pre>
-
-```
-python ./fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta --load_data --gpu_num 4 --species human --batch_size 8 --flatten_tag  --gradient_clip --loss_type BCE  --jobnum 001 --species Human --DDP
-```
 
 
 ## Model Prediction.
@@ -118,12 +119,17 @@ python ./fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_hum
 There should prepare your input file to ".fasta"(#Input-format) format
 
 ```
-python ./DeepLocRNA/fine_tuning_deeprbploc_allRNA_prediction.py --fasta ./example.fasta 
+python ./DeepLocRNA/fine_tuning_deeprbploc_allRNA_prediction.py --fasta ./example.fasta --rna_types mRNA --species Human
 ```
 Alternatively, you can also use our online webserver if you only have a couple sequences to be predicted ()
 
 ## IG scores calculation
 
+```
+python fine_tuning_deeprbploc_allRNA_prediction.py --fasta ./example.fasta --rna_types mRNA --species Human --plot True
+```
+
+If you wish to get the precise nucleotide contribution, please choose "--plot" as True, and define the configure file yourself as "att_config.csv" before input in the input frame.
 ### attribution config file
 ```
 starts,ends
@@ -132,15 +138,18 @@ starts,ends
 ```
 Where 10 to 100 is the interval that you want to get the attribution scores.
 ```
-python fine_tuning_deeprbploc_allRNA_prediction.py --fasta ./example.fasta --att_config ./att_config.csv --plot True
+python fine_tuning_deeprbploc_allRNA_prediction.py --fasta ./example.fasta --rna_types lncRNA --att_config att_config.csv --species Human --plot True
 ```
-If you wish to get the precise nucleotide contribution, please choose "--plot" as True, and define the configure file yourself as "att_config.csv" before input in the input frame.
 
 
-arguments
+
+
+Arguments for prediction
 Long                    |  Description
 ------------------------|  ------------
 `--fasta`               |  Path to the input fasta file, formatted according to [the input format](#input-format).
+`--rna_types`           |  The type of RNA you want to predict
+`--species`             |  The species you want to predict
 `--att_config`          |  Path to the customized position of a specific sequence as `.csv`. formatted according to [att config format](#attribution-config-file)
 `--plot`                |  Plot the attribution figures, this is mandatory if you want to visualize the explaination plots. Default: True
 
