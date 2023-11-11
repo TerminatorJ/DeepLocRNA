@@ -20,14 +20,13 @@ FROM continuumio/miniconda3
 
 WORKDIR /home/DeepLocRNA
 
-CMD ["sh", "-c", "df -h && docker info | grep 'Mem'"]
 
 COPY DeepLocRNA DeepLocRNA
 COPY setup.py .
 COPY README.md .
 COPY requirements.txt .
 COPY parnet-develop parnet-develop
-RUN pip install --no-cache-dir -r requirements.txt # server has additional requirements
+RUN pip install -r requirements.txt # server has additional requirements
 RUN pip install ./parnet-develop
 
 COPY webserver/run.sh .
