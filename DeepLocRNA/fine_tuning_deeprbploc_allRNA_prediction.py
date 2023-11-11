@@ -211,7 +211,7 @@ if __name__ == "__main__":
 
     predict(fasta = args.fasta, rna_types = args.rna_types, plot = args.plot, att_config = args.att_config, species = args.species)
     if args.plot == "True":
-      print("Please download the IG plot by pressing the download button")
+      print("Please download the results by pressing the download button")
 
 
 #python fine_tuning_deeprbploc_allRNA_prediction.py --fasta ./example.fasta --device cpu
