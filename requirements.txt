@@ -14,3 +14,5 @@ torchsummary==1.5.1
 torchvision==0.14.1
 wandb==0.14.0
 matplotlib==3.6.3 
+tensorflow==2.4.1
+typing-extensions==4.7.1

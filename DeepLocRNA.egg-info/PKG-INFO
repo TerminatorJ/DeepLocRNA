@@ -1,8 +1,24 @@
 Metadata-Version: 2.1
 Name: DeepLocRNA
-Version: 0.0.2
+Version: 0.0.3
 Summary: Predicting RNA localization based on RBP binding information
 Home-page: https://github.com/TerminatorJ/DeepLocRNA
 Author: TerminatorJ
 Author-email: wangjun19950708@gmail.com
 License: MIT
+Requires-Dist: captum==0.6.0
+Requires-Dist: gin_config==0.5.0
+Requires-Dist: h5py==2.10.0
+Requires-Dist: Keras==2.2.4
+Requires-Dist: logomaker==0.8
+Requires-Dist: numpy==1.19.5
+Requires-Dist: pandas==1.4.4
+Requires-Dist: Pillow==9.4.0
+Requires-Dist: pytorch_lightning==1.9.4
+Requires-Dist: scikit_learn==1.0.2
+Requires-Dist: torch==1.13.1
+Requires-Dist: torchinfo==1.7.2
+Requires-Dist: torchsummary==1.5.1
+Requires-Dist: torchvision==0.14.1
+Requires-Dist: wandb==0.14.0
+Requires-Dist: matplotlib==3.6.3

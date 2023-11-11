@@ -59,10 +59,10 @@ class Finetune:
 
         # Check if the directory has been created
         if os.path.exists(self.save_path):
-            print(f"Directory '{self.save_path}' has been created successfully.")
+            print(f"Directory '{self.save_path}' already exist.")
         else:
             os.makedirs(self.save_path)
-            print(f"Failed to create directory '{self.ssave_path}'.")
+            print(f"Directory '{self.save_path}' has been created.")
 
         
 
