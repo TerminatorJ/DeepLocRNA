@@ -26,7 +26,7 @@ From git
 pip install git+https://github.com/TerminatorJ/DeepLocRNA.git
 or from pypi
 pip install DeepLocRNA
-<pre>
+</pre>
 
 
 
