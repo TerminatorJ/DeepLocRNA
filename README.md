@@ -39,13 +39,7 @@ pip install tensorflow==2.4.1
 pip install typing-extensions==4.7.1
 ```
 
-Install the pre-trained model
-```
-wget https://github.com/mhorlacher/parnet/archive/refs/heads/develop.zip
-```
-```
-pip install develop.zip
-```
+
 
 
 ## Train the model
