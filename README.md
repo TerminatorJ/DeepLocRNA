@@ -52,7 +52,7 @@ wget https://github.com/TerminatorJ/DeepLocRNA/archive/refs/heads/main.zip
 
 Then compress the zip file
 unzip main.zip
-</prep>
+</pre>
 
 
 ### Step 2: Save encoded data
