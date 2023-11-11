@@ -7,12 +7,27 @@ DeeplocRNA is a deep neural network that predicts the RNA localization, enabling
 
 ### Environment preperation
 
-To run the model, you should download DeepLocRNA via git or pip
+Please make sure anaconda is installed in your local machine, create a new working environment to run DeepLocRNA
+```
+conda create -n DeepLocRNA python=3.8
+```
 
+Enter the new created environment
+  
 ```
+source activate deepLocRNA
+```
+
+
+To run the model, you should download DeepLocRNA via git or pypi
+
+<pre>
+From git
 pip install git+https://github.com/TerminatorJ/DeepLocRNA.git
-```
-install conda in your local machine
+or from pypi
+pip install DeepLocRNA
+</pre>
+
 
 
 
@@ -22,30 +37,46 @@ if you want to train the model youself, please follow the following steps
 ### Step 1: Preparing your FASTA file
 #### Input format
 DeepLocRNA works on FASTA files, e.g.
-```
+<pre>
 >test1
 ACTGCCGTATCGTAGCTAGCTAGTGATCGTAGCTACGTAGCTAGCTAGCTACGATCGTAGTCAGTCGTAGTACGTCA
 >test2
 ACACACATGAGCGATGTAGTCGATGATGCATCGACGATCGATCGAGCTACGTAGCATCGATCGATGCATCGACGTAG
-```
-### Step 2: Save encoded data
+</pre>
+One can aldo use our prepared dataset to train the model as below
+
+### Step 2: Download this repository to your local machine
 
 <pre>
-python ./DeepLocRNA/fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta  
+wget https://github.com/TerminatorJ/DeepLocRNA/archive/refs/heads/main.zip
+
+Then compress the zip file
+unzip main.zip
 </pre>
 
-### Step 2: Save encoded tagged data
-In order to do multiple RNA prediction, we will generate tag for each RNA species
+
+### Step 3: Save encoded data
+
 <pre>
-python ./DeepLocRNA/fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta --RNA_tag
+cd ./DeepLocRNA
 </pre>
-Afterwards, there will be both "*_X_tag.npy" and "*_X.npy" in the "./DeepLocRNA/data/dataname/" folder.
+  
+<pre>
+python ./fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta  
+</pre>
+Afterwards, there will be "*_X.npy" in the "./DeepLocRNA/data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc" folder.
 
-### Step 3: Training the model
+In order to do multiple RNA prediction, we will generate tags for all RNA species
+<pre>
+python ./fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta --RNA_tag
+</pre>
+Afterwards, there will be "*_X_tag.npy" in the "./DeepLocRNA/data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc" folder.
 
-you have two options
+### Step 4: Training the model
 
-first, you can use standard training strategy, using GPUs to train the model
+We provide two options to train the model
+
+First, you can use standard training strategy, using single GPU (or multiple GPUs) to train the model. It is worth note that the training is entangled with 5-folds as default, which will repeat 5 times to go through the data.
 
 ```
 python ./fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta --load_data --gpu_num 1 --species human --batch_size 8 --flatten_tag  --gradient_clip --loss_type BCE  --jobnum 001
