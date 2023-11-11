@@ -31,6 +31,14 @@ or from pypi
 pip install DeepLocRNA
 ```
 
+install two dependenies
+```
+pip install tensorflow==2.4.1
+```
+```
+pip install typing-extensions==4.7.1
+```
+
 
 
 
