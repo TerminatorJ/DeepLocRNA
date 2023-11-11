@@ -21,12 +21,15 @@ source activate deepLocRNA
 
 To run the model, you should download DeepLocRNA via git or pypi
 
-<pre>
+
 From git
+```
 pip install git+https://github.com/TerminatorJ/DeepLocRNA.git
+```
 or from pypi
+```
 pip install DeepLocRNA
-</pre>
+```
 
 
 
@@ -47,29 +50,30 @@ One can aldo use our prepared dataset to train the model as below
 
 ### Step 2: Download this repository to your local machine
 
-<pre>
+```
 wget https://github.com/TerminatorJ/DeepLocRNA/archive/refs/heads/main.zip
-
+```
 Then compress the zip file
+```
 unzip main.zip
-</pre>
+```
 
 
 ### Step 3: Save encoded data
 
-<pre>
+```
 cd ./DeepLocRNA
-</pre>
+```
   
-<pre>
+```
 python ./fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta  
-</pre>
+```
 Afterwards, there will be "*_X.npy" in the "./DeepLocRNA/data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc" folder.
 
 In order to do multiple RNA prediction, we will generate tags for all RNA species
-<pre>
+```
 python ./fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta --RNA_tag
-</pre>
+```
 Afterwards, there will be "*_X_tag.npy" in the "./DeepLocRNA/data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc" folder.
 
 ### Step 4: Training the model
