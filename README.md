@@ -11,6 +11,7 @@ Please make sure anaconda is installed in your local machine, create a new worki
 ```
 conda create -n DeepLocRNA python=3.8
 ```
+
 Enter the new created environment
   
 ```
