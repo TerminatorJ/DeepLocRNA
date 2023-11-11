@@ -28,6 +28,8 @@ COPY requirements.txt .
 COPY parnet-develop parnet-develop
 RUN conda install python=3.8
 RUN pip install -r requirements.txt # server has additional requirements
+RUN pip install tensorflow==2.4.1
+RUN pip install typing-extensions==4.7.1
 RUN pip install ./parnet-develop
 
 COPY webserver/run.sh .
