@@ -15,7 +15,7 @@ conda create -n DeepLocRNA python=3.8
 Enter the new created environment
   
 ```
-source activate deepLocRNA
+source activate DeepLocRNA
 ```
 
 
