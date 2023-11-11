@@ -14,7 +14,8 @@ from evaluation import Evaluation
 torch.manual_seed(123)
 np.random.seed(123)
 current_path = os.getcwd()
-
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+os.environ['CUDA_VISIBLE_DEVICES'] = "1"
 
 class Finetune:
     def __init__(self, left = 4000, right = 4000, device = "cuda", num_task = 5, fold = 0, 
