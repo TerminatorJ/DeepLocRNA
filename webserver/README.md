@@ -7,7 +7,7 @@ https://services.healthtech.dtu.dk/services/DeepLoc-2.0/
 
 In this webserver, we support the input file in a ".fasta" format. Because of the limited computational resource, this webserver only supports up to 200 sequences.  
 
-IG scores can also be calculated to explain the model by following this instruction (https://github.com/TerminatorJ/DeepLocRNA/DeepLocRNA/README.md).   
+IG scores can also be calculated to explain the model by following this instruction (https://github.com/TerminatorJ/DeepLocRNA).   
 
 
 Alternatively, if you want to predict a large number of RNA sequence, please download our standalone tool by  
