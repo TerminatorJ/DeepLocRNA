@@ -86,6 +86,13 @@ Afterwards, there will be "*_X_tag.npy" in the "./DeepLocRNA/data/allRNA/allRNA_
 
 ### Step 4: Training the model
 
+To train the model locally, RBP pre-trained model should be loaded first.
+```
+pip install ../parnet-develop
+```
+
+
+
 We provide two options to train the model
 
 First, you can use standard training strategy, using single GPU (or multiple GPUs) to train the model. It is worth note that the training is entangled with 5-folds as default, which will repeat 5 times to go through the data.
