@@ -25,7 +25,7 @@ refs = np.array(["Nucleus","Exosome","Cytosol","Cytoplasm","Ribosome","Membrane"
 all_thredsholds = {"Human":{"mRNA":{"Nucleus": 0.7551, "Exosome": 0.9796, "Cytosol": 0.2245, "Ribosome": 0.2857, "Membrane": 0.3061, "Endoplasmic reticulum": 0.1837},
                 "miRNA": {"Nucleus": 0.0204, "Exosome": 0.9592, "Cytoplasm": 0.0204, "Microvesicle": 0.8776, "Mitochondrion": 0.0204},
                 "lncRNA": {"Nucleus": 0.1020, "Exosome": 0.9796, "Cytosol": 0.2041, "Membrane": 0.0816},
-                "snoRNA": {"Nucleus": 0.5714, "Exosome": 0.0000, "Cytoplasm": 0.0612, "Microvesicle": 0.0000}}, 
+                "snoRNA": {"Nucleus": 0.5714, "Cytoplasm": 0.0612}}, 
                 "Mouse": {"mRNA":{"Nucleus": 0.4694, "Exosome": 0.6327, "Cytoplasm": 0.2653}, 
                 "miRNA":{"Nucleus": 0.1837, "Exosome": 0.7347, "Mitochondrion": 0.4082},
                 "lncRNA": {"Nucleus": 0.3673, "Exosome": 0.1837, "Cytoplasm": 0.2245}}}
@@ -48,7 +48,9 @@ def pass_thred(pred, thred):
             pred_str.append(locs[idx])
     pred_str = "/".join(pred_str)
     #replace cytoplasm as cytosol 
-    pred_str = pred_str.replace("Cytoplasm", "Cytosol")
+    pred_str = pred_str.replace("Cytoplasm", "Cytosol/Cytoplasm")
+    if len(pred_str) == 0:
+        pred_str = "None"
     return pred_str
 
 def get_att(att):
@@ -164,7 +166,7 @@ def predict(fasta, rna_types, batch_size = 2, plot = "False", att_config = None,
                 id = ids[idx]
                 for t in batch_str[idx].split("/"):
                     t_num = list(refs).index(t)
-                    attributions = ig.attribute(inputs=(embedding), target=t_num, n_steps=25, additional_forward_args = (m,x_tag), return_convergence_delta = False, internal_batch_size = 8)
+                    attributions = ig.attribute(inputs=(embedding), target=t_num, n_steps=25, additional_forward_args = (m,x_tag), return_convergence_delta = False, internal_batch_size = 4)
                     attributions = attributions.detach().cpu().numpy()
                     att, flat_att = get_att(attributions)
                     fig1 = plot_line(flat_att[:length])
@@ -173,7 +175,7 @@ def predict(fasta, rna_types, batch_size = 2, plot = "False", att_config = None,
                         att_cfg = pd.read_csv(att_config, skipinitialspace=True)
                         s = att_cfg["starts"][idx]
                         e = att_cfg["ends"][idx]
-                        if e-s <= 1000:
+                        if e-s > 1000:
                             print("the defined motif is longer than 1000nt")
                         fig2 = plot_motif(att[s:e+1], figsize=(16, 6), start = s)#to show complete x-axis
                         fig2.savefig("./output/motif_log_%s_%s.png" % (items, t), dpi=300)
