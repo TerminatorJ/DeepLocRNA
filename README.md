@@ -42,7 +42,7 @@ DeepLocRNA works on FASTA files, e.g.
 ACTGCCGTATCGTAGCTAGCTAGTGATCGTAGCTACGTAGCTAGCTAGCTACGATCGTAGTCAGTCGTAGTACGTCA
 >test2
 ACACACATGAGCGATGTAGTCGATGATGCATCGACGATCGATCGAGCTACGTAGCATCGATCGATGCATCGACGTAG
-<pre>
+</pre>
 One can aldo use our prepared dataset to train the model as below
 
 ### Step 2: Download this repository to your local machine
@@ -52,14 +52,14 @@ wget https://github.com/TerminatorJ/DeepLocRNA/archive/refs/heads/main.zip
 
 Then compress the zip file
 unzip main.zip
-<pre>
+</prep>
 
 
 ### Step 2: Save encoded data
 
 <pre>
 cd ./DeepLocRNA
-<pre>
+</pre>
   
 <pre>
 python ./fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta  
