@@ -55,7 +55,7 @@ unzip main.zip
 </pre>
 
 
-### Step 2: Save encoded data
+### Step 3: Save encoded data
 
 <pre>
 cd ./DeepLocRNA
@@ -64,19 +64,19 @@ cd ./DeepLocRNA
 <pre>
 python ./fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta  
 </pre>
-Afterwards, there will be both "*_X.npy" in the "./DeepLocRNA/data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc" folder.
-### Step 2: Save encoded tagged data
+Afterwards, there will be "*_X.npy" in the "./DeepLocRNA/data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc" folder.
+
 In order to do multiple RNA prediction, we will generate tags for all RNA species
 <pre>
 python ./fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta --RNA_tag
 </pre>
-Afterwards, there will be both "*_X_tag.npy" in the "./DeepLocRNA/data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc" folder.
+Afterwards, there will be "*_X_tag.npy" in the "./DeepLocRNA/data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc" folder.
 
-### Step 3: Training the model
+### Step 4: Training the model
 
-You have two options to train the model
+We provide two options to train the model
 
-First, you can use standard training strategy, using single GPU (or multiple GPUs) to train the model. It is worth note that the training is entangled with 5-folds as default, which will repeat 5 times.
+First, you can use standard training strategy, using single GPU (or multiple GPUs) to train the model. It is worth note that the training is entangled with 5-folds as default, which will repeat 5 times to go through the data.
 
 ```
 python ./fine_tuning_deeprbploc_allRNA.py --dataset ./data/allRNA/allRNA_all_human_data_seq_mergedm3locall2_deduplicated2_filtermilnc.fasta --load_data --gpu_num 1 --species human --batch_size 8 --flatten_tag  --gradient_clip --loss_type BCE  --jobnum 001
