@@ -14,7 +14,7 @@ modules: #This section defines the modules for your BioLib application. Modules 
         # default_machine: 'gpu.small'
         # gpu: required
 
-main_output_file: output.md
+main_output_file: /output.md
 
 arguments: 
 
