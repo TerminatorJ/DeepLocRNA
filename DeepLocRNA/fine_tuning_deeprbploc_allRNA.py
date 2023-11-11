@@ -262,7 +262,8 @@ class Finetune:
                 'focal' : False,
                 "nb_classes": self.num_task,
                 "RNA_type" : RNA_type,
-                "dim_attention" : self.dim_attention
+                "dim_attention" : self.dim_attention,
+                "species" : self.species
                 }
        
 

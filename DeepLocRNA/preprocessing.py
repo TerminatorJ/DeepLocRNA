@@ -214,7 +214,7 @@ def preprocess_data(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/test
            #adding additional tag for each sequence
            # print("Xall before:", np.array(Xall).shape, "example:", Xall[0])
            if RNA_tag:
-               Xall = get_new_seq(Train[i], Xall, encoding_keys, left, right)
+               Xall = get_new_seq_train(Train[i], Xall, encoding_keys, left, right)
            # print("Xall shape:", np.array(Xall).shape, Xall[0])
         #    print("where < 6 :", len(Xall), Xall)
         #    mRNA_site = Xall
@@ -258,7 +258,7 @@ def preprocess_data(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/test
             #merge left and right and padding after sequence
             Xall = [np.concatenate([x,y],axis=-1) for x,y in zip(X_left,X_right)]
             if RNA_tag:
-               Xall = get_new_seq(Test[i], Xall, encoding_keys, left, right)
+               Xall = get_new_seq_train(Test[i], Xall, encoding_keys, left, right)
             # mRNA_site = np.where(Xall[:,0] == 9)[0]
             # print("number of mRNA in test fold", i, "is:", len(mRNA_site))
             Xtest[i] = pad_sequences(Xall,maxlen=left+right,dtype=np.int8, value=encoding_keys.index('UNK'),padding='post')
@@ -292,7 +292,7 @@ def preprocess_data(left=4000, right=4000, dataset='/home/sxr280/DeepRBPLoc/test
             #merge left and right and padding after sequence
             Xall = [np.concatenate([x,y],axis=-1) for x,y in zip(X_left,X_right)]
             if RNA_tag:
-               Xall = get_new_seq(Val[i], Xall, encoding_keys, left, right)
+               Xall = get_new_seq_train(Val[i], Xall, encoding_keys, left, right)
             Xval[i] = pad_sequences(Xall,maxlen=left+right,dtype=np.int8, value=encoding_keys.index('UNK'),padding='post')
             
             if pooling == False:

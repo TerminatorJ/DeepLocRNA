@@ -56,6 +56,20 @@ def get_new_seq(input_types, Xall, encoding_keys, left, right):
             Xall2.append(seq2[:left+right])
     return Xall2
 
+def get_new_seq_train(ids, Xall, encoding_keys, left, right):
+    Xall2 = []
+    for seq, id_tag in zip(Xall, ids):
+        pattern = r'RNA_category:([^,\n]+)'
+        RNA_types = re.findall(pattern, id_tag)
+        RNA_tag = encoding_keys.index(RNA_types[0])
+        # RNA_tag = encoding_keys.index(input_types)
+        seq2 = np.insert(seq, 0, RNA_tag)
+        if len(seq) < (left+right):
+            Xall2.append(seq2)
+        else:
+            Xall2.append(seq2[:left+right])
+    return Xall2
+
 def cal_loss_weight(y, beta=0.99999):
 
     num_task = 7
