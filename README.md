@@ -1,3 +1,11 @@
+[![PyPI version](https://badge.fury.io/py/DeepLocRNA.svg)](https://badge.fury.io/py/DeepLocRNA)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/DeepLocRNA)
+[![PyPIDownloadsTotal](https://pepy.tech/badge/DeepLocRNA)](https://pepy.tech/project/DeepLocRNA)
+[![Stars](https://img.shields.io/github/stars/DeepLocRNA/DeepLocRNA?logo=GitHub&color=yellow)](https://github.com/DeepLocRNA/DeepLocRNA/stargazers)
+
+
+
+
 ![DeepLocRNA](webserver/assets/Figure1small.png)
 # DeepLocRNA
 
