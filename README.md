@@ -1,7 +1,8 @@
 [![PyPI version](https://badge.fury.io/py/DeepLocRNA.svg)](https://badge.fury.io/py/DeepLocRNA)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/DeepLocRNA)
 [![PyPIDownloadsTotal](https://pepy.tech/badge/DeepLocRNA)](https://pepy.tech/project/DeepLocRNA)
-[![DOI](https://zenodo.org/badge/TerminatorJ/DeepLocRNA.svg)](https://zenodo.org/badge/latestdoi/TerminatorJ/DeepLocRNA)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10116380.svg)](https://zenodo.org/badge/latestdoi/10.5281/zenodo.10116380)
+
 
 
 
