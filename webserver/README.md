@@ -26,6 +26,6 @@ IG scores can also be calculated to explain the model by following this instruct
 
   
 # Concept image
-![DeepLocRNA](assets/figure1small2.png)
+![DeepLocRNA](assets/Figure1_6.png)
 
 
