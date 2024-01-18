@@ -5,7 +5,7 @@
 
 
 
-![DeepLocRNA](webserver/assets/Figure1small.png)
+![DeepLocRNA](webserver/assets/Figure1_6.png)
 # DeepLocRNA
 
 ## Introduction
