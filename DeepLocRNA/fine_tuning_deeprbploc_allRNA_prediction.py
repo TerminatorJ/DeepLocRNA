@@ -195,7 +195,10 @@ def predict(fasta, rna_types, batch_size = 2, plot = "False", att_config = None,
     result_df.to_csv("output.txt", sep=" ")
     with open('output.md', mode='w') as output:
       output.write(f'# Prediction Results\n\n')
-      output.write('![Predicted results](output.txt)')
+      with open('output.txt', 'r') as text_file:
+        text_content = text_file.read()
+        output.write(text_content)
+      # output.write('![Predicted results](output.txt)')
 
 
 
