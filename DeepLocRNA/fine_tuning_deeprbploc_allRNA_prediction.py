@@ -197,6 +197,7 @@ def predict(fasta, rna_types, batch_size = 2, plot = "False", att_config = None,
     markdown_table = tabulate(result_df, headers='keys', tablefmt='pipe', showindex=True)
     with open('output.md', mode='w') as output:
       output.write(f'# Prediction Results\n\n')
+      output.write(f'Results can be downloaded by clicking the download button\n')
       output.write(markdown_table)
       # output.write('![Predicted results](output.txt)')
 
