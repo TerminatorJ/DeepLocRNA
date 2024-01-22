@@ -194,7 +194,7 @@ def predict(fasta, rna_types, batch_size = 2, plot = "False", att_config = None,
     #embedding the prediction string
     result_df["Prediction"] = results_str
     result_df.to_csv("output.txt", sep=" ")
-    markdown_table = tabulate(result_df, headers='keys', tablefmt='pipe', showindex=False)
+    markdown_table = tabulate(result_df, headers='keys', tablefmt='pipe', showindex=True)
     with open('output.md', mode='w') as output:
       output.write(f'# Prediction Results\n\n')
       output.write(markdown_table)
