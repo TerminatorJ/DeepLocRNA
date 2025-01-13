@@ -128,7 +128,7 @@ There should prepare your input file to ".fasta"(#Input-format) format
 ```
 python ./DeepLocRNA/fine_tuning_deeprbploc_allRNA_prediction.py --fasta ./example.fasta --rna_types mRNA --species Human
 ```
-Alternatively, you can also use our online webserver if you only have a couple sequences to be predicted ()
+Alternatively, you can also use our online webserver if you only have a couple sequences to be predicted (https://biolib.com/KU/DeepLocRNA/)
 
 ## IG scores calculation
 
