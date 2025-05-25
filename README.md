@@ -162,6 +162,9 @@ Long                    |  Description
 
 
 
+## Citation
+
+Wang J, Horlacher M, Cheng L, et al. DeepLocRNA: an interpretable deep learning model for predicting RNA subcellular localization with domain-specific transfer-learning[J]. Bioinformatics, 2024, 40(2): btae065.
 
 
 
